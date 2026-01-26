@@ -2,36 +2,7 @@
    RG STUDIO PAGE SPECIFIC JAVASCRIPT
    =========================================== */
 
-// Floating animation on scroll
 document.addEventListener('DOMContentLoaded', function() {
-    const logo = document.querySelector('.rg-hero__logo');
-    const description = document.querySelector('.rg-hero__description');
-
-    if (!logo || !description) return;
-
-    // Intersection Observer para detectar cuando el hero es visible
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.3 // Se activa cuando el 30% del elemento es visible
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Activar animación de flotación
-                logo.classList.add('float-active');
-                description.classList.add('float-active');
-            } else {
-                // Desactivar cuando sale del viewport (opcional)
-                logo.classList.remove('float-active');
-                description.classList.remove('float-active');
-            }
-        });
-    }, observerOptions);
-
-    // Observar el logo (usamos el logo como referencia para toda la sección hero)
-    observer.observe(logo);
 
     // ===========================================
     // STUDIO GALLERY LIGHTBOX

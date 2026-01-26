@@ -112,36 +112,10 @@ body:has(.rg-studio-hero) .main {
     margin: 0 auto;
 }
 
-.rg-hero__logo.float-active {
-    animation: floatLogo 4s ease-in-out infinite;
-}
-
-@keyframes floatLogo {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
 .rg-hero__logo img {
     width: 100%;
     height: auto;
     filter: brightness(1.2) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-}
-
-.rg-hero__logo.float-active img {
-    animation: floatShadow 4s ease-in-out infinite;
-}
-
-@keyframes floatShadow {
-    0%, 100% {
-        filter: brightness(1.2) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-    }
-    50% {
-        filter: brightness(1.2) drop-shadow(0 12px 20px rgba(0, 0, 0, 0.4));
-    }
 }
 
 .rg-hero__description {
@@ -150,11 +124,6 @@ body:has(.rg-studio-hero) .main {
     color: var(--color-text-inverted);
     opacity: 0.9;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.rg-hero__description.float-active {
-    animation: floatText 4s ease-in-out infinite;
-    animation-delay: 0.5s;
 }
 
 /* Studio Thumbnails in Hero */
@@ -302,17 +271,6 @@ body:has(.rg-studio-hero) .main {
 .lightbox__prev:hover,
 .lightbox__next:hover {
     transform: translateY(-50%) scale(1.1);
-}
-
-@keyframes floatText {
-    0%, 100% {
-        transform: translateY(0px);
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-    50% {
-        transform: translateY(-15px);
-        text-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    }
 }
 
 /* ---------- About Studio Section with Video ---------- */
