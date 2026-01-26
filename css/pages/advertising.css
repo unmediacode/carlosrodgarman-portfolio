@@ -41,6 +41,38 @@
     margin: 0;
 }
 
+/* ---------- Loading Indicator ---------- */
+.advertising-hero__loader {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.advertising-hero__loader-text {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.advertising-hero__loader-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.advertising-hero__loader-progress {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
 /* ---------- Main Content ---------- */
 body:has(.advertising-hero) .main {
     margin-top: 0;

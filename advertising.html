@@ -78,6 +78,12 @@
     <section class="advertising-hero">
         <h1 class="advertising-hero__title">ADVERTISING</h1>
         <p class="advertising-hero__subtitle">Commercial Production · TV Series · Products</p>
+        <div class="advertising-hero__loader">
+            <p class="advertising-hero__loader-text">LOADING</p>
+            <div class="advertising-hero__loader-bar">
+                <div class="advertising-hero__loader-progress"></div>
+            </div>
+        </div>
     </section>
 
     <main class="main">
@@ -121,17 +127,42 @@
         // Initialize Advertising cards with filtering
         const heroSection = document.querySelector('.advertising-hero');
         const gridContainer = document.getElementById('advertisingGrid');
+        const loaderProgress = document.querySelector('.advertising-hero__loader-progress');
         const filterButtons = document.querySelectorAll('.advertising-filter-btn');
 
         let allItems = [];
         let currentFilter = 'all';
         let cardInstances = [];
 
+        // Check if curtain was already shown
+        const curtainShown = sessionStorage.getItem('advertising-curtain-shown');
+
+        if (curtainShown) {
+            // Skip curtain animation, show content immediately
+            heroSection.style.display = 'none';
+        }
+
+        // Track loading progress
+        let resourcesLoaded = 0;
+        let totalResources = 0;
+        let dataLoaded = false;
+
+        function updateProgress() {
+            if (totalResources > 0) {
+                const progress = (resourcesLoaded / totalResources) * 100;
+                if (loaderProgress) {
+                    loaderProgress.style.width = progress + '%';
+                }
+            }
+        }
+
         // Load advertising items
         fetch('advertising/advertising-data.json')
             .then(response => response.json())
             .then(items => {
                 allItems = items;
+                totalResources = items.length;
+                dataLoaded = true;
 
                 // Update filter button counts
                 updateFilterCounts();
@@ -139,26 +170,26 @@
                 // Initial load - show all items
                 renderItems(allItems);
 
-                // Check if curtain was already shown
-                const curtainShown = sessionStorage.getItem('advertising-curtain-shown');
-
-                if (curtainShown) {
-                    // Skip curtain animation, show content immediately
-                    heroSection.style.display = 'none';
-                } else {
-                    // Wait for all page resources to load
+                if (!curtainShown) {
+                    // Wait for window load, then open curtain
                     window.addEventListener('load', () => {
                         setTimeout(() => {
                             heroSection.classList.add('curtain-open');
-                            // Mark curtain as shown for this session
                             sessionStorage.setItem('advertising-curtain-shown', 'true');
-                        }, 300);
+                        }, 500);
                     });
+
+                    // Fallback: If load event doesn't fire in 3 seconds, open anyway
+                    setTimeout(() => {
+                        if (!heroSection.classList.contains('curtain-open')) {
+                            heroSection.classList.add('curtain-open');
+                            sessionStorage.setItem('advertising-curtain-shown', 'true');
+                        }
+                    }, 3000);
                 }
             })
             .catch(error => {
                 console.error('Error loading advertising data:', error);
-                // Skip curtain on error
                 heroSection.style.display = 'none';
             });
 
@@ -227,6 +258,10 @@
                 // Create card instance
                 const cardInstance = new AdvertisingCard(cardElement, item);
                 cardInstances.push(cardInstance);
+
+                // Track loaded resources
+                resourcesLoaded++;
+                updateProgress();
 
                 // Reveal animation with stagger
                 setTimeout(() => {

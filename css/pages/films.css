@@ -41,6 +41,51 @@
     margin: 0;
 }
 
+/* ---------- Loading Indicator ---------- */
+.films-hero__loader {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.films-hero__loader-text {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.films-hero__loader-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.films-hero__loader-progress {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.films-hero__loader-dots {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5em;
+    animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
 /* ---------- Main Content ---------- */
 body:has(.films-hero) .main {
     margin-top: 0;

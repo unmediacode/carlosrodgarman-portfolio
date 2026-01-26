@@ -78,6 +78,12 @@
     <section class="films-hero">
         <h1 class="films-hero__title">FILMS & TV</h1>
         <p class="films-hero__subtitle">Composer · Mixing Engineer · Producer</p>
+        <div class="films-hero__loader">
+            <p class="films-hero__loader-text">LOADING</p>
+            <div class="films-hero__loader-bar">
+                <div class="films-hero__loader-progress"></div>
+            </div>
+        </div>
     </section>
 
     <main class="main">
@@ -105,12 +111,38 @@
         // Initialize Film cards with progressive loading
         const heroSection = document.querySelector('.films-hero');
         const gridContainer = document.getElementById('filmsGrid');
+        const loaderProgress = document.querySelector('.films-hero__loader-progress');
         const BATCH_SIZE = 8; // Load 8 films at a time (2 rows of 4)
 
-        // Load films progressively
+        // Check if curtain was already shown
+        const curtainShown = sessionStorage.getItem('films-curtain-shown');
+
+        if (curtainShown) {
+            // Skip curtain animation, show content immediately
+            heroSection.style.display = 'none';
+        }
+
+        // Track loading progress
+        let resourcesLoaded = 0;
+        let totalResources = 0;
+        let dataLoaded = false;
+
+        function updateProgress() {
+            if (totalResources > 0) {
+                const progress = (resourcesLoaded / totalResources) * 100;
+                if (loaderProgress) {
+                    loaderProgress.style.width = progress + '%';
+                }
+            }
+        }
+
+        // Load films data
         fetch('films/films-data.json')
             .then(response => response.json())
             .then(films => {
+                totalResources = films.length;
+                dataLoaded = true;
+
                 let loadedCount = 0;
 
                 // Function to load a batch of films
@@ -127,11 +159,15 @@
                         // Create card instance
                         new FilmCard(cardElement, film);
 
+                        // Track loaded resources
+                        resourcesLoaded++;
+                        updateProgress();
+
                         // Reveal animation
                         const globalIndex = startIndex + batchIndex;
                         setTimeout(() => {
                             cardElement.classList.add('reveal');
-                        }, 700 + (globalIndex * 50)); // Slightly slower stagger for films
+                        }, 700 + (globalIndex * 50));
                     });
 
                     loadedCount += batch.length;
@@ -140,35 +176,35 @@
                     if (loadedCount < films.length) {
                         setTimeout(() => {
                             loadBatch(loadedCount);
-                        }, 400); // Small delay between batches
+                        }, 400);
                     }
                 }
 
-                // Check if curtain was already shown
-                const curtainShown = sessionStorage.getItem('films-curtain-shown');
-
-                if (curtainShown) {
-                    // Skip curtain animation, show content immediately
-                    heroSection.style.display = 'none';
-                    loadBatch(0);
-                } else {
-                    // Wait for all page resources to load
+                if (!curtainShown) {
+                    // Wait for window load, then open curtain
                     window.addEventListener('load', () => {
                         setTimeout(() => {
                             heroSection.classList.add('curtain-open');
-                            // Mark curtain as shown for this session
                             sessionStorage.setItem('films-curtain-shown', 'true');
-                            // Start loading after curtain opens
                             setTimeout(() => loadBatch(0), 700);
-                        }, 300);
+                        }, 500);
                     });
+
+                    // Fallback: If load event doesn't fire in 3 seconds, open anyway
+                    setTimeout(() => {
+                        if (!heroSection.classList.contains('curtain-open')) {
+                            heroSection.classList.add('curtain-open');
+                            sessionStorage.setItem('films-curtain-shown', 'true');
+                            setTimeout(() => loadBatch(0), 700);
+                        }
+                    }, 3000);
+                } else {
+                    loadBatch(0);
                 }
             })
             .catch(error => {
                 console.error('Error loading film data:', error);
-                // Skip curtain on error
                 heroSection.style.display = 'none';
-                loadBatch(0);
             });
     </script>
 </body>
