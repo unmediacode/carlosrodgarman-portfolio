@@ -98,6 +98,34 @@ class FilmCard {
      */
     attachEventListeners() {
         const trailerBtn = this.element.querySelector('[data-action="trailer"]');
+        const poster = this.element.querySelector('.film-card__poster');
+
+        // Touch interaction for mobile/iPad
+        if (poster) {
+            let touchStartTime = 0;
+
+            poster.addEventListener('touchstart', (e) => {
+                touchStartTime = Date.now();
+                this.element.classList.add('touch-active');
+            }, { passive: true });
+
+            poster.addEventListener('touchend', (e) => {
+                const touchDuration = Date.now() - touchStartTime;
+
+                // If it was a quick tap (not a scroll), keep hover effect visible for 2 seconds
+                if (touchDuration < 200) {
+                    // Clear any existing timeout
+                    if (this.touchTimeout) {
+                        clearTimeout(this.touchTimeout);
+                    }
+
+                    // Keep hover effect visible for 2 seconds
+                    this.touchTimeout = setTimeout(() => {
+                        this.element.classList.remove('touch-active');
+                    }, 2000);
+                }
+            }, { passive: true });
+        }
 
         if (trailerBtn) {
             trailerBtn.addEventListener('click', (e) => {

@@ -43,7 +43,8 @@
     opacity: 1;
 }
 
-.film-card:hover .film-card__poster-image {
+.film-card:hover .film-card__poster-image,
+.film-card.touch-active .film-card__poster-image {
     transform: scale(1.06);
 }
 
@@ -60,7 +61,8 @@
     transition: opacity 0.5s ease;
 }
 
-.film-card:hover .film-card__poster-overlay {
+.film-card:hover .film-card__poster-overlay,
+.film-card.touch-active .film-card__poster-overlay {
     opacity: 1;
 }
 

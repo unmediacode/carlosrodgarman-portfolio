@@ -77,7 +77,39 @@ class AdvertisingCard {
     }
 
     attachEventListeners() {
-        // Click on card to open modal if video exists
+        const imageWrapper = this.element.querySelector('.advertising-card__image-wrapper');
+
+        // Touch interaction for mobile/iPad
+        if (imageWrapper) {
+            let touchStartTime = 0;
+
+            imageWrapper.addEventListener('touchstart', (e) => {
+                touchStartTime = Date.now();
+                this.element.classList.add('touch-active');
+            }, { passive: true });
+
+            imageWrapper.addEventListener('touchend', (e) => {
+                const touchDuration = Date.now() - touchStartTime;
+
+                // If it was a quick tap (not a scroll)
+                if (touchDuration < 200) {
+                    // If there's a video, open modal
+                    if (this.data.videoUrl && this.data.videoUrl.trim() !== '') {
+                        this.openModal();
+                    } else {
+                        // Keep hover effect visible for 2 seconds
+                        if (this.touchTimeout) {
+                            clearTimeout(this.touchTimeout);
+                        }
+                        this.touchTimeout = setTimeout(() => {
+                            this.element.classList.remove('touch-active');
+                        }, 2000);
+                    }
+                }
+            }, { passive: true });
+        }
+
+        // Click on card to open modal if video exists (desktop)
         if (this.data.videoUrl && this.data.videoUrl.trim() !== '') {
             this.element.addEventListener('click', () => this.openModal());
         }

@@ -74,11 +74,12 @@
     transition: opacity 0.3s ease;
 }
 
-.cd-player:hover .cd-player__cover-overlay {
+.cd-player:hover .cd-player__cover-overlay,
+.cd-player.touch-active .cd-player__cover-overlay {
     opacity: 1;
 }
 
-/* ---------- Control Buttons (appear on hover) ---------- */
+/* ---------- Control Buttons (appear on hover or touch) ---------- */
 .cd-player__controls {
     position: absolute;
     bottom: 1rem;
@@ -91,7 +92,8 @@
     z-index: 10;
 }
 
-.cd-player:hover .cd-player__controls {
+.cd-player:hover .cd-player__controls,
+.cd-player.touch-active .cd-player__controls {
     opacity: 1;
     transform: translateY(0);
 }

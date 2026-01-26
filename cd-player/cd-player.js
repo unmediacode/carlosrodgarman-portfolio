@@ -291,6 +291,53 @@ class CDPlayer {
     attachEventListeners() {
         const playBtn = this.element.querySelector('.cd-player__btn--play');
         const infoBtn = this.element.querySelector('.cd-player__btn--info');
+        const cover = this.element.querySelector('.cd-player__cover');
+
+        // Touch interaction for mobile/iPad
+        // Tapping the cover activates controls
+        if (cover) {
+            let touchStartTime = 0;
+
+            cover.addEventListener('touchstart', (e) => {
+                touchStartTime = Date.now();
+                this.element.classList.add('touch-active');
+            }, { passive: true });
+
+            cover.addEventListener('touchend', (e) => {
+                const touchDuration = Date.now() - touchStartTime;
+
+                // If it was a quick tap (not a scroll), keep controls visible for 3 seconds
+                if (touchDuration < 200) {
+                    // Clear any existing timeout
+                    if (this.touchTimeout) {
+                        clearTimeout(this.touchTimeout);
+                    }
+
+                    // Keep controls visible for 3 seconds
+                    this.touchTimeout = setTimeout(() => {
+                        this.element.classList.remove('touch-active');
+                    }, 3000);
+                }
+            }, { passive: true });
+
+            // Also handle click for desktop fallback
+            cover.addEventListener('click', (e) => {
+                // Only handle if clicking on the cover itself (not buttons)
+                if (e.target === cover || e.target.classList.contains('cd-player__cover-overlay') || e.target.classList.contains('cd-player__cover-image')) {
+                    this.element.classList.toggle('touch-active');
+
+                    // Auto-hide after 3 seconds on desktop too
+                    if (this.element.classList.contains('touch-active')) {
+                        if (this.touchTimeout) {
+                            clearTimeout(this.touchTimeout);
+                        }
+                        this.touchTimeout = setTimeout(() => {
+                            this.element.classList.remove('touch-active');
+                        }, 3000);
+                    }
+                }
+            });
+        }
 
         // Play/pause button
         if (playBtn) {
