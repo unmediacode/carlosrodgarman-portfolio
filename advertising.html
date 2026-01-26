@@ -280,10 +280,6 @@
                 const cardInstance = new AdvertisingCard(cardElement, item);
                 cardInstances.push(cardInstance);
 
-                // Track loaded resources
-                resourcesLoaded++;
-                updateProgress();
-
                 // Reveal animation with stagger
                 setTimeout(() => {
                     cardElement.classList.add('reveal');
