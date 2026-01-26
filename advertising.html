@@ -167,15 +167,14 @@
                 // Update filter button counts
                 updateFilterCounts();
 
-                // Initial load - show all items
-                renderItems(allItems);
-
                 if (!curtainShown) {
                     // Wait for window load, then open curtain
                     window.addEventListener('load', () => {
                         setTimeout(() => {
                             heroSection.classList.add('curtain-open');
                             sessionStorage.setItem('advertising-curtain-shown', 'true');
+                            // Render items after curtain opens
+                            setTimeout(() => renderItems(allItems), 700);
                         }, 500);
                     });
 
@@ -184,8 +183,12 @@
                         if (!heroSection.classList.contains('curtain-open')) {
                             heroSection.classList.add('curtain-open');
                             sessionStorage.setItem('advertising-curtain-shown', 'true');
+                            setTimeout(() => renderItems(allItems), 700);
                         }
                     }, 3000);
+                } else {
+                    // Skip curtain, render immediately
+                    renderItems(allItems);
                 }
             })
             .catch(error => {
