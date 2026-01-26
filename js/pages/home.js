@@ -57,17 +57,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 rightPart.style.transform = `translateX(${rightPosition}vw)`;
 
                 // Block Gospel Symphony section until parallax animation completes
-                if (progress < 1) {
-                    // Animation not complete - keep Gospel Symphony completely below viewport
-                    // Push it down by the full animation distance plus its own height
-                    const pushDown = animationDistance + window.innerHeight;
+                if (progress < 0.99) {
+                    // Animation not complete - keep Gospel Symphony hidden
+                    // Push it down enough to stay out of view
+                    const pushDown = window.innerHeight * 1.5;
                     gospelSection.style.transform = `translateY(${pushDown}px)`;
-                    gospelSection.style.transition = 'none'; // No transition during parallax
+                    gospelSection.style.pointerEvents = 'none';
                     animationComplete = false;
                 } else {
-                    // Animation complete - allow Gospel Symphony to pass over
+                    // Animation complete (99%+) - allow Gospel Symphony to pass over
                     gospelSection.style.transform = 'translateY(0)';
-                    gospelSection.style.transition = 'transform 0.3s ease-out';
+                    gospelSection.style.pointerEvents = 'auto';
                     animationComplete = true;
                 }
             } else {
