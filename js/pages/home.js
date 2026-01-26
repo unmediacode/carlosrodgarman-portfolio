@@ -32,15 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height') || 70);
 
             // Check if section is sticky (reached its sticky position)
-            if (scrollTop >= sectionTop) {
+            if (scrollTop >= sectionTop && scrollTop < sectionTop + animationDistance) {
+                // We're in the parallax animation zone
                 isSticky = true;
 
                 // Calculate scroll progress after section becomes sticky
                 const scrollProgress = scrollTop - sectionTop;
 
                 // Calculate animation progress (0 to 1)
-                // 0 = start position (off screen)
-                // 1 = end position (center)
                 let progress = Math.min(scrollProgress / animationDistance, 1);
 
                 // Easing function for smoother animation
@@ -56,27 +55,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 leftPart.style.transform = `translateX(${leftPosition}vw)`;
                 rightPart.style.transform = `translateX(${rightPosition}vw)`;
 
-                // Block Gospel Symphony section until parallax animation completes
-                if (progress < 0.99) {
-                    // Animation not complete - keep Gospel Symphony hidden
-                    // Push it down enough to stay out of view
-                    const pushDown = window.innerHeight * 1.5;
-                    gospelSection.style.transform = `translateY(${pushDown}px)`;
-                    gospelSection.style.pointerEvents = 'none';
-                    animationComplete = false;
-                } else {
-                    // Animation complete (99%+) - allow Gospel Symphony to pass over
-                    gospelSection.style.transform = 'translateY(0)';
-                    gospelSection.style.pointerEvents = 'auto';
-                    animationComplete = true;
-                }
+                // Block Gospel Symphony during animation
+                const pushDown = (1 - progress) * animationDistance;
+                gospelSection.style.transform = `translateY(${pushDown}px)`;
+
+            } else if (scrollTop >= sectionTop + animationDistance) {
+                // Past the animation zone - Gospel Symphony can pass over normally
+                leftPart.style.transform = 'translateX(0)';
+                rightPart.style.transform = 'translateX(0)';
+                gospelSection.style.transform = 'translateY(0)';
+
             } else {
+                // Before the section becomes sticky
                 isSticky = false;
-                // Reset to initial positions
                 leftPart.style.transform = 'translateX(-100vw)';
                 rightPart.style.transform = 'translateX(100vw)';
-                gospelSection.style.transform = 'none';
-                gospelSection.style.transition = '';
+                gospelSection.style.transform = 'translateY(0)';
             }
         }
 
