@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Rodgarman - Musical Producer, Arranger and Engineer</title>
+    <meta name="description" content="Carlos Rodgarman is a Musical Producer, Arranger and Engineer. Discover his latest work with top artists like Michael Bublé and more.">
+
+    <!-- Preconnect para fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Global (mismo orden siempre) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <!-- CSS Específico de esta página -->
+    <link rel="stylesheet" href="css/pages/home.css">
+
+    <!-- CSS Responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="logo" aria-label="Volver al inicio">
+                <img src="assets/logos/logo.svg" alt="Rodgarman">
+            </a>
+
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link nav__link--active">HOME</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="rg-studio.html" class="nav__link">RG<br>STUDIO</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="music.html" class="nav__link">MUSIC</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="films.html" class="nav__link">FILMS<br>TV</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="advertising.html" class="nav__link">ADVERTISING</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#technical" class="nav__link">TECHNICAL<br>videos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#blog" class="nav__link">BLOG</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">ABOUT</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="section section--hero hero" id="home">
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="heading-display">Discover his<br>latest work</h1>
+                    <p class="hero__description">Carlos Rodgarman is a Musical<br>Producer, Arranger and<br>Engineer.</p>
+                    <a href="#social" class="hero__social" aria-label="Social media">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <circle cx="10" cy="10" r="8"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Rotated text -->
+            <div class="rotated-text">
+                Rogarbandmusic.ink is a corporation registered in the State of California.
+            </div>
+        </section>
+
+        <!-- Michael Bublé Section -->
+        <section class="section section--featured featured-project" style="background-image: url('assets/images/backgrounds/michael-buble-bg.jpg');">
+            <div class="container">
+                <div class="featured-project__content">
+                    <div class="section-title">
+                        <div class="section-title__line"></div>
+                        <h3 class="section-title__text">The Essential</h3>
+                        <div class="section-title__line"></div>
+                    </div>
+
+                    <h2 class="heading-hero">MICHAEL BUBLÉ</h2>
+
+                    <div class="separator"></div>
+
+                    <div class="vector-logo">
+                        <img src="assets/vectors/dolby-atmos.svg" alt="Dolby Atmos">
+                    </div>
+
+                    <a href="#michael-buble" class="btn btn--link">more info</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gospel Symphony Section -->
+        <section class="section section--featured featured-project featured-project--alt" style="background-image: url('assets/images/backgrounds/gospel-symphony-bg.jpg');">
+            <div class="container">
+                <div class="featured-project__content">
+                    <div class="section-title">
+                        <div class="section-title__line"></div>
+                        <h3 class="section-title__text">Rebeca Rods</h3>
+                        <div class="section-title__line"></div>
+                    </div>
+
+                    <h2 class="heading-hero">GOSPEL SYMPHONY</h2>
+
+                    <div class="separator"></div>
+
+                    <a href="#gospel-symphony" class="btn btn--link">MORE INFO</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients Section -->
+        <section class="section section--surface" id="clients">
+            <div class="container">
+                <div class="section-title">
+                    <div class="section-title__line"></div>
+                    <h2 class="clients__heading">Clients</h2>
+                    <div class="section-title__line"></div>
+                </div>
+
+                <p class="clients__intro">
+                    Here are some of the clients I've worked with over the years in my professional career, mostly in the USA.<br>Get in touch with me if you've something spinning in your mind, I can help you!
+                </p>
+
+                <div class="logo-grid">
+                    <div class="logo-grid__item">
+                        <img src="assets/logos/clients/logo_sony.svg" alt="Sony Music" loading="lazy">
+                    </div>
+                    <div class="logo-grid__item">
+                        <img src="assets/logos/clients/logo_time_life.svg" alt="Time Life" loading="lazy">
+                    </div>
+                    <div class="logo-grid__item">
+                        <img src="assets/logos/clients/logo_warner_music.svg" alt="Warner Music" loading="lazy">
+                    </div>
+                    <div class="logo-grid__item">
+                        <img src="assets/logos/clients/logo_dream.svg" alt="Dream Records" loading="lazy">
+                    </div>
+                    <div class="logo-grid__item">
+                        <img src="assets/logos/clients/logo_universal.svg" alt="Universal Music" loading="lazy">
+                    </div>
+                    <div class="logo-grid__item">
+                        <img src="assets/logos/clients/logo_rtve.svg" alt="RTVE" loading="lazy">
+                    </div>
+                    <div class="logo-grid__item">
+                        <img src="assets/logos/clients/logo_paramount.svg" alt="Paramount" loading="lazy">
+                    </div>
+                    <div class="logo-grid__item">
+                        <img src="assets/logos/clients/logo_waner.svg" alt="Warner Bros" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__main">
+            <div class="footer__section">
+                <h3 class="footer__heading">Downloads</h3>
+                <ul class="footer__list">
+                    <li><a href="#" class="footer__link">EPK - Electronic Press Kit</a></li>
+                    <li><a href="#" class="footer__link">One Sheet - Project Info</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__section">
+                <img src="assets/svg/logo-inverted.svg" alt="Rodgarman" width="170" height="66">
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 0C4.477 0 0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.879V12.89h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.989C16.343 19.129 20 14.99 20 10c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 0C7.284 0 6.944.012 5.877.06 4.813.11 4.086.278 3.45.525a4.92 4.92 0 00-1.772 1.153A4.92 4.92 0 00.525 3.45C.278 4.086.109 4.813.06 5.877.012 6.944 0 7.284 0 10s.012 3.056.06 4.123c.05 1.064.218 1.791.465 2.427a4.92 4.92 0 001.153 1.772c.5.5 1.091.853 1.772 1.153.636.247 1.363.415 2.427.465C6.944 19.988 7.284 20 10 20s3.056-.012 4.123-.06c1.064-.05 1.791-.218 2.427-.465a4.92 4.92 0 001.772-1.153 4.92 4.92 0 001.153-1.772c.247-.636.415-1.363.465-2.427.048-1.067.06-1.407.06-4.123s-.012-3.056-.06-4.123c-.05-1.064-.218-1.791-.465-2.427a4.92 4.92 0 00-1.153-1.772A4.92 4.92 0 0016.55.525C15.914.278 15.187.109 14.123.06 13.056.012 12.716 0 10 0zm0 1.802c2.67 0 2.986.01 4.04.058.976.045 1.505.207 1.858.344.467.182.8.398 1.15.748.35.35.566.683.748 1.15.137.353.3.882.344 1.857.048 1.055.058 1.37.058 4.04 0 2.672-.01 2.987-.058 4.042-.045.975-.207 1.504-.344 1.857a3.097 3.097 0 01-.748 1.15c-.35.35-.683.566-1.15.748-.353.137-.882.3-1.857.344-1.054.048-1.37.058-4.041.058-2.67 0-2.987-.01-4.04-.058-.976-.045-1.505-.207-1.858-.344a3.097 3.097 0 01-1.15-.748 3.098 3.098 0 01-.748-1.15c-.137-.353-.3-.882-.344-1.857-.048-1.055-.058-1.37-.058-4.041 0-2.67.01-2.986.058-4.04.045-.976.207-1.505.344-1.858.182-.467.398-.8.748-1.15.35-.35.683-.566 1.15-.748.353-.137.882-.3 1.857-.344 1.055-.048 1.37-.058 4.041-.058z"/>
+                            <path d="M10 13.333a3.333 3.333 0 110-6.666 3.333 3.333 0 010 6.666zm0-8.468a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm6.538-.203a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M18.335 0H1.665C.747 0 0 .746 0 1.665v16.67C0 19.254.746 20 1.665 20h16.67C19.254 20 20 19.254 20 18.335V1.665C20 .747 19.254 0 18.335 0zM5.932 17.065H2.968V7.516h2.964v9.549zM4.45 6.22a1.717 1.717 0 110-3.434 1.717 1.717 0 010 3.434zm12.615 10.845h-2.963v-4.645c0-1.107-.02-2.53-1.542-2.53-1.543 0-1.78 1.204-1.78 2.449v4.726H8.817V7.516h2.844v1.305h.04c.396-.75 1.363-1.542 2.806-1.542 3.002 0 3.558 1.977 3.558 4.547v5.239z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer__section">
+                <h3 class="footer__heading">Group RG</h3>
+                <ul class="footer__list">
+                    <li><a href="#" class="footer__link">Rodgar Band Music.ink</a></li>
+                    <li><a href="#" class="footer__link">RG Corp</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__divider"></div>
+
+        <div class="footer__bottom">
+            <p class="footer__copyright">
+                Rogarbandmusic.ink is a corporation registered in the State of California.
+            </p>
+            <button class="footer__back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <svg width="8" height="22" viewBox="0 0 8 22" fill="currentColor">
+                    <path d="M4 0L0 4h3v18h2V4h3L4 0z"/>
+                </svg>
+            </button>
+        </div>
+    </footer>
+
+    <!-- JS Global -->
+    <script src="js/main.js"></script>
+</body>
+</html>

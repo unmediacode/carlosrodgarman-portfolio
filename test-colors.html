@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Panel Colors</title>
+    <link rel="stylesheet" href="cd-player/cd-player.css">
+    <style>
+        body {
+            background: #1a1a1a;
+            padding: 2rem;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .info {
+            background: white;
+            color: black;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+        .cd-player {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h2>Testing Automatic Color Extraction from Album Covers</h2>
+        <p>Click the "+" button on each player to see the panel color extracted from the album cover.</p>
+        <p>Open the browser console to see the RGB values extracted from each image.</p>
+        <p><strong>Colores extraídos automáticamente de las portadas - no hay colores predefinidos</strong></p>
+    </div>
+
+    <div id="testGrid" class="test-grid"></div>
+
+    <script src="cd-player/cd-player.js"></script>
+    <script>
+        // Load first 15 albums to test color extraction
+        fetch('cd-player/music-data.json')
+            .then(response => response.json())
+            .then(albums => {
+                const testAlbums = albums.slice(0, 15);
+
+                console.log(`Testing color extraction with ${testAlbums.length} albums`);
+
+                const gridContainer = document.getElementById('testGrid');
+
+                testAlbums.forEach(album => {
+                    const playerElement = document.createElement('div');
+                    playerElement.className = 'cd-player';
+                    playerElement.dataset.albumId = album.id;
+                    gridContainer.appendChild(playerElement);
+
+                    new CDPlayer(playerElement, album);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading data:', error);
+            });
+    </script>
+</body>
+</html>

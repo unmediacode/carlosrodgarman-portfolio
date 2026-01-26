@@ -1,0 +1,247 @@
+/* ===========================================
+   ADVERTISING PAGE STYLES
+   =========================================== */
+
+/* ---------- Advertising Hero Section (Telón) ---------- */
+.advertising-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.advertising-hero.curtain-open {
+    transform: translateY(-100%);
+}
+
+.advertising-hero__title {
+    font-size: 6rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+}
+
+.advertising-hero__subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: var(--font-weight-normal);
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+/* ---------- Main Content ---------- */
+body:has(.advertising-hero) .main {
+    margin-top: 0;
+}
+
+/* ---------- Advertising Grid Section ---------- */
+.advertising-grid-section {
+    background: #f5f5f5;
+    padding: 8rem 0 6rem;
+    min-height: 100vh;
+}
+
+/* ---------- Filter Menu ---------- */
+.advertising-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+.advertising-filter-btn {
+    position: relative;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    border: 2px solid #ddd;
+    color: #666;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    white-space: nowrap;
+}
+
+.advertising-filter-btn:hover {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.advertising-filter-btn.active {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.advertising-filter-btn::after {
+    content: attr(data-count);
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.125rem 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.advertising-filter-btn.active::after,
+.advertising-filter-btn:hover::after {
+    opacity: 1;
+}
+
+.advertising-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem 2rem;
+    padding: 2rem 0;
+    align-items: start;
+    transition: opacity 0.3s ease;
+}
+
+.advertising-grid.filtering {
+    opacity: 0.5;
+}
+
+/* Ensure each card maintains its own stacking context */
+.advertising-grid .advertising-card {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.advertising-grid .advertising-card.reveal {
+    animation: revealCard 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes revealCard {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.advertising-grid .advertising-card:hover {
+    z-index: 10;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1024px) {
+    .advertising-hero {
+        padding: 6rem 0 4rem;
+    }
+
+    .advertising-hero__title {
+        font-size: 4rem;
+    }
+
+    .advertising-hero__subtitle {
+        font-size: 1.25rem;
+    }
+
+    .advertising-filters {
+        margin-bottom: 3rem;
+    }
+
+    .advertising-filter-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.8125rem;
+    }
+
+    .advertising-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .advertising-hero__title {
+        font-size: 3rem;
+    }
+
+    .advertising-hero__subtitle {
+        font-size: 1.125rem;
+    }
+
+    .advertising-grid-section {
+        padding: 6rem 0 4rem;
+    }
+
+    .advertising-filters {
+        gap: 0.75rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .advertising-filter-btn {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.75rem;
+    }
+
+    .advertising-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .advertising-hero__title {
+        font-size: 2.5rem;
+    }
+
+    .advertising-hero__subtitle {
+        font-size: 1rem;
+    }
+
+    .advertising-grid-section {
+        padding: 5rem 0 3rem;
+    }
+
+    .advertising-filters {
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .advertising-filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+    }
+
+    .advertising-filter-btn::after {
+        margin-left: 0.25rem;
+        padding: 0.125rem 0.375rem;
+        font-size: 0.65rem;
+    }
+
+    .advertising-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

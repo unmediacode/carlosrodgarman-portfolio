@@ -1,0 +1,302 @@
+[
+  {
+    "id": "three-stooges",
+    "title": "THE THREE STOOGES",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2018",
+    "coverImage": "advertising/images/tv_series_1.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "lucy-ball",
+    "title": "LUCY BALL",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2018",
+    "coverImage": "advertising/images/tv_series_2.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "bing-crosby",
+    "title": "BING CROSBY",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2018",
+    "coverImage": "advertising/images/tv_series_3.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "best-of-west",
+    "title": "BEST OF THE WEST",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2018",
+    "coverImage": "advertising/images/tv_series_best_west_2020.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "carol-burnet",
+    "title": "CAROL BURNET",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2017",
+    "coverImage": "advertising/images/tv_series_5_2020.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "laugh-in",
+    "title": "LAUGH-IN",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2017",
+    "coverImage": "advertising/images/tv_series_6.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "all-in-family",
+    "title": "ALL IN THE FAMILY",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2017",
+    "coverImage": "advertising/images/tv_series_2020.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "andy-williams",
+    "title": "ANDY WILLIAMS",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2017",
+    "coverImage": "advertising/images/tv_series_andy_2020.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "bob-hope",
+    "title": "BOB HOPE AMERICAN HERO",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2017",
+    "coverImage": "advertising/images/tv_series_9.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "hee-haw",
+    "title": "HEE HAW",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2016",
+    "coverImage": "advertising/images/tv_series_10.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "red-skelton",
+    "title": "RED SKELTON",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2016",
+    "coverImage": "advertising/images/tv_series_12.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "wonder-years",
+    "title": "THE WONDER YEARS",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2014",
+    "coverImage": "advertising/images/tv_series_12.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "batman-tv",
+    "title": "BATMAN THE TV",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2014",
+    "coverImage": "advertising/images/tv_series_batman_2020.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "ed-sullivan",
+    "title": "THE ED SULLIVAN SHOW",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2014",
+    "coverImage": "advertising/images/tv_series_sullivan.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "dean-martin",
+    "title": "THE DEAN MARTIN ROAST",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2014",
+    "coverImage": "advertising/images/tv_series_16-_2020.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "johnny-carson",
+    "title": "THE JOHNNY CARSON SHOW",
+    "client": "TIMELIFE",
+    "category": "DVD SERIES",
+    "year": "2014",
+    "coverImage": "advertising/images/tv_series_17.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "kitchenaid",
+    "title": "KITCHENAID",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_1.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "phillips-airfryer",
+    "title": "PHILLIPS AIR FRYER",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_2.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "lifelock",
+    "title": "LIFELOCK",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_3.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "murad-rlr",
+    "title": "MURAD RLR",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_4.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "cue-vapor",
+    "title": "CUE VAPOR SYSTEM",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_5.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "kitchenaid-mixer",
+    "title": "KITCHEN AID MIXER",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_6.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "murad-resurgence",
+    "title": "MURAD RESURGENCE",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_7.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "maxiclimber",
+    "title": "MAXICLIMBER",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/maxi.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "switchdriver",
+    "title": "SWITCHDRIVER",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_8.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "paintrunner-pro",
+    "title": "PAINTRUNNER PRO",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_9.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "ancestry",
+    "title": "ANCESTRY",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_10.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "proactive",
+    "title": "PROACTIVE",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_11.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "androzene",
+    "title": "ANDROZENE",
+    "client": "",
+    "category": "PRODUCT",
+    "year": "",
+    "coverImage": "advertising/images/tv_produc_12.jpg",
+    "videoUrl": "",
+    "description": ""
+  },
+  {
+    "id": "timelife-logo",
+    "title": "TIME LIFE LOGO",
+    "client": "TIMELIFE",
+    "category": "LOGO",
+    "year": "",
+    "coverImage": "advertising/images/logo_time.jpg",
+    "videoUrl": "",
+    "description": ""
+  }
+]

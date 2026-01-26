@@ -1,0 +1,154 @@
+/* ===========================================
+   MUSIC PAGE STYLES
+   =========================================== */
+
+/* ---------- Music Hero Section (Telón) ---------- */
+.music-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.music-hero.curtain-open {
+    transform: translateY(-100%);
+}
+
+.music-hero__title {
+    font-size: 6rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+}
+
+.music-hero__subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: var(--font-weight-normal);
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+/* ---------- Main Content ---------- */
+body:has(.music-hero) .main {
+    margin-top: 0;
+}
+
+/* ---------- Albums Grid Section ---------- */
+.music-grid-section {
+    background: #f5f5f5;
+    padding: 8rem 0 6rem;
+    min-height: 100vh;
+}
+
+.container--wide {
+    max-width: 1200px;
+    padding: 0 var(--spacing-lg, 2rem);
+}
+
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
+    align-items: start;
+}
+
+/* Ensure each player maintains its own stacking context */
+.albums-grid .cd-player {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.albums-grid .cd-player.reveal {
+    animation: revealPlayer 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes revealPlayer {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.albums-grid .cd-player:hover,
+.albums-grid .cd-player:has(.cd-player__work-panel.active),
+.albums-grid .cd-player:has(.cd-player__info-panel.active) {
+    z-index: 10;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1024px) {
+    .music-hero {
+        padding: 6rem 0 4rem;
+    }
+
+    .music-hero__title {
+        font-size: 4rem;
+    }
+
+    .music-hero__subtitle {
+        font-size: 1.25rem;
+    }
+
+    .albums-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .music-hero__title {
+        font-size: 3rem;
+    }
+
+    .music-hero__subtitle {
+        font-size: 1.125rem;
+    }
+
+    .music-grid-section {
+        padding: 6rem 0 4rem;
+    }
+
+    .albums-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .music-hero__title {
+        font-size: 2.5rem;
+    }
+
+    .music-hero__subtitle {
+        font-size: 1rem;
+    }
+
+    .music-grid-section {
+        padding: 5rem 0 3rem;
+    }
+
+    .albums-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

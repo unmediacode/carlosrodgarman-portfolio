@@ -1,0 +1,112 @@
+[
+  {
+    "id": "ray-donovan",
+    "title": "RAY DONOVAN",
+    "role": "Additional Music",
+    "year": "2018",
+    "coverImage": "assets/images/films/ray_donovan.jpg",
+    "trailerUrl": "",
+    "imdbUrl": "https://www.imdb.com/title/tt2249007/",
+    "description": ""
+  },
+  {
+    "id": "purasangre",
+    "title": "PURASANGRE",
+    "role": "Producer / Mixing Engineer and Orchestrations",
+    "year": "2017",
+    "coverImage": "assets/images/films/purasangre.jpg",
+    "trailerUrl": "assets/videos/trailers/purasangre_trailer.mp4",
+    "imdbUrl": "https://www.imdb.com/title/tt4835926/",
+    "description": ""
+  },
+  {
+    "id": "beautiful-faces",
+    "title": "BEAUTIFUL FACES",
+    "role": "Mixing Engineer and Orchestrations",
+    "year": "2015",
+    "coverImage": "assets/images/films/beautiful.jpeg",
+    "trailerUrl": "assets/videos/trailers/faces_trailer.mp4",
+    "imdbUrl": "",
+    "description": ""
+  },
+  {
+    "id": "dinner-for-schmucks",
+    "title": "DINNER FOR SCHMUCKS",
+    "role": "Composer Soundtrack",
+    "year": "2010",
+    "coverImage": "assets/images/films/dinner.jpg",
+    "trailerUrl": "assets/videos/trailers/dinner_trailer.mp4",
+    "imdbUrl": "https://www.imdb.com/title/tt0427152/",
+    "description": ""
+  },
+  {
+    "id": "guardian",
+    "title": "GUARDIAN",
+    "role": "Composer and Producer",
+    "year": "2009",
+    "coverImage": "assets/images/films/gurdian.jpg",
+    "trailerUrl": "",
+    "imdbUrl": "",
+    "description": ""
+  },
+  {
+    "id": "faded-memories",
+    "title": "FADED MEMORIES",
+    "role": "Composer and Producer",
+    "year": "2009",
+    "coverImage": "assets/images/films/faded_memories.jpg",
+    "trailerUrl": "assets/videos/trailers/faded_trailer.mp4",
+    "imdbUrl": "",
+    "description": ""
+  },
+  {
+    "id": "el-ojo-unico",
+    "title": "EL OJO ÚNICO",
+    "role": "Composer and Producer",
+    "year": "2008",
+    "coverImage": "assets/images/films/el_ojo_unico.jpg",
+    "trailerUrl": "assets/videos/trailers/el_ojo_trailer.mp4",
+    "imdbUrl": "",
+    "description": ""
+  },
+  {
+    "id": "bricktown",
+    "title": "BRICKTOWN",
+    "role": "Composer and Producer",
+    "year": "2008",
+    "coverImage": "assets/images/films/brick.jpg",
+    "trailerUrl": "assets/videos/trailers/brick_trailer.mp4",
+    "imdbUrl": "https://www.imdb.com/title/tt1174686/",
+    "description": ""
+  },
+  {
+    "id": "rescue-me",
+    "title": "RESCUE ME",
+    "role": "Composer and Producer",
+    "year": "2005",
+    "coverImage": "assets/images/films/rescue2020.jpg",
+    "trailerUrl": "assets/videos/trailers/rescue.mp4",
+    "imdbUrl": "",
+    "description": ""
+  },
+  {
+    "id": "carrilanos",
+    "title": "CARRILANOS",
+    "role": "Additional Music",
+    "year": "2002",
+    "coverImage": "assets/images/films/carrilanos.jpg",
+    "trailerUrl": "assets/videos/trailers/carrilanos_trailer.mp4",
+    "imdbUrl": "https://www.imdb.com/title/tt3239902/",
+    "description": ""
+  },
+  {
+    "id": "aillados",
+    "title": "AILLADOS",
+    "role": "Orchestration",
+    "year": "2001",
+    "coverImage": "assets/images/films/aillados.jpg",
+    "trailerUrl": "",
+    "imdbUrl": "",
+    "description": ""
+  }
+]

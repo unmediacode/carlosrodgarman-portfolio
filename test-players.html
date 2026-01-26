@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Players Debug</title>
+    <link rel="stylesheet" href="cd-player/cd-player.css">
+    <style>
+        body {
+            background: #1a1a1a;
+            padding: 2rem;
+        }
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .debug {
+            background: white;
+            color: black;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug" id="debugInfo">Loading...</div>
+    <div id="albumsGrid" class="albums-grid"></div>
+
+    <script src="cd-player/cd-player.js"></script>
+    <script>
+        const debugEl = document.getElementById('debugInfo');
+
+        console.log('Starting initialization...');
+
+        fetch('cd-player/music-data.json')
+            .then(response => {
+                console.log('Fetch response:', response);
+                return response.json();
+            })
+            .then(albums => {
+                console.log('Albums loaded:', albums.length);
+                debugEl.innerHTML = `<p>Albums loaded: ${albums.length}</p>`;
+
+                const gridContainer = document.getElementById('albumsGrid');
+                console.log('Grid container:', gridContainer);
+
+                albums.forEach((album, index) => {
+                    console.log(`Creating player ${index + 1}:`, album.id);
+                    const playerElement = document.createElement('div');
+                    playerElement.className = 'cd-player';
+                    playerElement.dataset.albumId = album.id;
+                    gridContainer.appendChild(playerElement);
+
+                    try {
+                        new CDPlayer(playerElement, album);
+                        console.log(`Player ${index + 1} created successfully`);
+                    } catch (error) {
+                        console.error(`Error creating player ${index + 1}:`, error);
+                        debugEl.innerHTML += `<p style="color: red;">Error on album ${index + 1}: ${error.message}</p>`;
+                    }
+                });
+
+                debugEl.innerHTML += `<p>Players created: ${gridContainer.children.length}</p>`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                debugEl.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            });
+    </script>
+</body>
+</html>

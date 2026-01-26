@@ -1,0 +1,30 @@
+[
+  {
+    "id": "impossible-dream",
+    "coverImage": "../images/albums/impossible-dream.jpg",
+    "artist": "Aaron Lazar",
+    "title": "Impossible Dream",
+    "year": "2023",
+    "completedWork": "Engineer",
+    "audioFile": "../audio/impossible-dream-preview.mp3",
+    "links": {
+      "appleMusic": "https://music.apple.com/album/impossible-dream",
+      "spotify": "https://open.spotify.com/album/impossible-dream",
+      "amazon": "https://music.amazon.com/albums/impossible-dream"
+    }
+  },
+  {
+    "id": "example-album-2",
+    "coverImage": "../images/albums/example-2.jpg",
+    "artist": "Artist Name",
+    "title": "Album Title",
+    "year": "2024",
+    "completedWork": "Producer",
+    "audioFile": "../audio/example-2-preview.mp3",
+    "links": {
+      "appleMusic": "https://music.apple.com/album/example",
+      "spotify": "https://open.spotify.com/album/example",
+      "amazon": "https://music.amazon.com/albums/example"
+    }
+  }
+]

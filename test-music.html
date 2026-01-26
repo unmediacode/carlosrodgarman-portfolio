@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Music Players</title>
+    <link rel="stylesheet" href="cd-player/cd-player.css">
+    <style>
+        body {
+            background: #f0f0f0;
+            padding: 2rem;
+            font-family: sans-serif;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .debug {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Players Test</h1>
+    <div class="debug" id="debugInfo"></div>
+    <div id="albumsGrid" class="test-grid"></div>
+
+    <script src="cd-player/cd-player.js"></script>
+    <script>
+        const debugEl = document.getElementById('debugInfo');
+        debugEl.innerHTML = '<p>Loading albums...</p>';
+
+        // Initialize players
+        initCDPlayers('cd-player/music-data.json');
+
+        // Debug
+        setTimeout(() => {
+            const players = document.querySelectorAll('.cd-player');
+            debugEl.innerHTML = `
+                <p><strong>Status:</strong></p>
+                <p>Total players created: ${players.length}</p>
+                <p>Grid container found: ${document.getElementById('albumsGrid') ? 'Yes' : 'No'}</p>
+            `;
+        }, 1000);
+    </script>
+</body>
+</html>

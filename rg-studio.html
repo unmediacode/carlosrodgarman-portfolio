@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RG Studio - Carlos Rodgarman</title>
+    <meta name="description" content="RG Studio - Professional music production, recording, and mixing studio by Carlos Rodgarman.">
+
+    <!-- Preconnect para fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Global (mismo orden siempre) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <!-- CSS Específico de esta página -->
+    <link rel="stylesheet" href="css/pages/rg-studio.css">
+
+    <!-- CSS Responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="logo" aria-label="Volver al inicio">
+                <img src="assets/logos/logo.svg" alt="Rodgarman">
+            </a>
+
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">HOME</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="rg-studio.html" class="nav__link nav__link--active">RG<br>STUDIO</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="music.html" class="nav__link">MUSIC</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="films.html" class="nav__link">FILMS<br>TV</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="advertising.html" class="nav__link">ADVERTISING</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#technical" class="nav__link">TECHNICAL<br>videos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#blog" class="nav__link">BLOG</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">ABOUT</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="section section--hero rg-hero" id="rg-studio">
+            <div class="container">
+                <div class="rg-hero__content">
+                    <div class="rg-hero__logo">
+                        <img src="assets/svg/logo_RG.svg" alt="RG Studio">
+                    </div>
+                    <p class="rg-hero__description">Where Dreams Come True.</p>
+
+                    <!-- Studio Gallery Thumbnails -->
+                    <div class="studio-thumbs">
+                        <div class="studio-thumbs__item" data-image="control-room">
+                            <div class="studio-thumbs__placeholder">Control Room A</div>
+                        </div>
+                        <div class="studio-thumbs__item" data-image="recording-booth">
+                            <div class="studio-thumbs__placeholder">Recording Booth</div>
+                        </div>
+                        <div class="studio-thumbs__item" data-image="mixing-console">
+                            <div class="studio-thumbs__placeholder">Mixing Console</div>
+                        </div>
+                        <div class="studio-thumbs__item" data-image="equipment-rack">
+                            <div class="studio-thumbs__placeholder">Equipment Rack</div>
+                        </div>
+                        <div class="studio-thumbs__item" data-image="live-room">
+                            <div class="studio-thumbs__placeholder">Live Room</div>
+                        </div>
+                        <div class="studio-thumbs__item" data-image="lounge-area">
+                            <div class="studio-thumbs__placeholder">Lounge Area</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div class="lightbox" id="studioLightbox">
+            <button class="lightbox__close" aria-label="Close">&times;</button>
+            <button class="lightbox__prev" aria-label="Previous">&lsaquo;</button>
+            <button class="lightbox__next" aria-label="Next">&rsaquo;</button>
+            <div class="lightbox__content">
+                <div class="lightbox__placeholder">Studio Image</div>
+                <p class="lightbox__caption"></p>
+            </div>
+        </div>
+
+        <!-- About Studio Section -->
+        <section class="section section--dark about-studio-section" id="about-studio">
+            <video class="about-studio-section__video" autoplay muted loop playsinline>
+                <source src="assets/videos/genysisblack.mp4.mp4" type="video/mp4">
+            </video>
+            <div class="about-studio-section__overlay"></div>
+            <div class="container">
+                <div class="studio-intro">
+                    <h2 class="heading-xl studio-intro__title">Welcome to RG Studio</h2>
+                    <p class="studio-intro__text">
+                        RG Studio is a state-of-the-art recording facility offering world-class production,
+                        mixing, and mastering services. With over 20 years of experience in the music industry,
+                        we provide an environment where creativity meets technical excellence.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section services-section" id="services">
+            <div class="container">
+                <h2 class="services-section__title">Services</h2>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <img src="assets/svg/headphone.svg" alt="Music Production">
+                        </div>
+                        <h3 class="service-card__title">Music Production</h3>
+                        <ul class="service-card__list">
+                            <li>Songwriting</li>
+                            <li>Arranging</li>
+                            <li>Vocal Production</li>
+                            <li>Orquestación</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <img src="assets/svg/music-solid.svg" alt="Composition">
+                        </div>
+                        <h3 class="service-card__title">Composition</h3>
+                        <ul class="service-card__list">
+                            <li>Music for Media</li>
+                            <li>Advertising</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <img src="assets/svg/microphone-solid.svg" alt="Recording">
+                        </div>
+                        <h3 class="service-card__title">Recording</h3>
+                        <ul class="service-card__list">
+                            <li>Voice Over</li>
+                            <li>Bands / Ensembles</li>
+                            <li>Remote Production</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <img src="assets/svg/sound-mix.svg" alt="Mixing">
+                        </div>
+                        <h3 class="service-card__title">Mixing</h3>
+                        <ul class="service-card__list">
+                            <li>Dolby Atmos</li>
+                            <li>All Surround Formats</li>
+                            <li>Stereo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dolby Atmos Section -->
+        <section class="section dolby-section" id="dolby-atmos">
+            <div class="container">
+                <!-- Title -->
+                <h2 class="dolby-section__title">Dolby Atmos</h2>
+
+                <!-- Video/Hero -->
+                <div class="dolby-hero">
+                    <video class="dolby-hero__video" autoplay loop muted playsinline>
+                        <source src="assets/videos/Dolby-Presents_-The-World-Of-Sound-_-Demo-_-Dolby-Atmos-_-Dolby.mp4" type="video/mp4">
+                    </video>
+                    <div class="dolby-hero__overlay"></div>
+                </div>
+
+                <!-- Dolby Atmos Devices -->
+                <div class="dolby-devices">
+                    <h3 class="dolby-devices__title">Dolby Atmos Device</h3>
+                    <div class="dolby-devices__grid">
+                        <div class="device-card">
+                            <div class="device-card__icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Carrocería del coche -->
+                                    <path d="M16 30L20 22C20.5 21 21.5 20 23 20H41C42.5 20 43.5 21 44 22L48 30H16Z" fill="currentColor"/>
+                                    <rect x="12" y="30" width="40" height="14" rx="2" fill="currentColor"/>
+                                    <!-- Ventanas -->
+                                    <path d="M22 23L24 26H32L34 23H22Z" fill="#000" opacity="0.3"/>
+                                    <path d="M34 23L36 26H40L42 23H34Z" fill="#000" opacity="0.3"/>
+                                    <!-- Ruedas -->
+                                    <circle cx="20" cy="44" r="6" fill="currentColor"/>
+                                    <circle cx="20" cy="44" r="3" fill="#000" opacity="0.5"/>
+                                    <circle cx="44" cy="44" r="6" fill="currentColor"/>
+                                    <circle cx="44" cy="44" r="3" fill="#000" opacity="0.5"/>
+                                    <!-- Faros -->
+                                    <circle cx="14" cy="34" r="2" fill="#00D9FF" opacity="0.6"/>
+                                    <circle cx="50" cy="34" r="2" fill="#00D9FF" opacity="0.6"/>
+                                </svg>
+                            </div>
+                            <h4 class="device-card__name">Auto</h4>
+                            <p class="device-card__description">More than 70% of drivers are in the habit of listen to music regularly in the car.</p>
+                        </div>
+
+                        <div class="device-card">
+                            <div class="device-card__icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="18" y="10" width="28" height="44" rx="4" fill="currentColor"/>
+                                    <rect x="20" y="14" width="24" height="32" fill="#000"/>
+                                </svg>
+                            </div>
+                            <h4 class="device-card__name">Mobile</h4>
+                            <p class="device-card__description">Leading brands in the market already include Dolby Atmos in their phones.</p>
+                        </div>
+
+                        <div class="device-card">
+                            <div class="device-card__icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="8" y="14" width="48" height="32" rx="2" fill="currentColor"/>
+                                    <rect x="10" y="16" width="44" height="26" fill="#000"/>
+                                    <path d="M28 48L24 46H40L36 48H28Z" fill="currentColor"/>
+                                    <rect x="20" y="48" width="24" height="2" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h4 class="device-card__name">Computer</h4>
+                            <p class="device-card__description">Windows 10 & MAC OS now offer Dolby Atmos compatibility.</p>
+                        </div>
+
+                        <div class="device-card">
+                            <div class="device-card__icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="10" y="16" width="44" height="28" rx="2" fill="currentColor"/>
+                                    <rect x="12" y="18" width="40" height="22" fill="#000"/>
+                                    <rect x="6" y="44" width="12" height="8" rx="1" fill="currentColor"/>
+                                    <rect x="46" y="44" width="12" height="8" rx="1" fill="currentColor"/>
+                                    <rect x="24" y="44" width="16" height="4" rx="1" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h4 class="device-card__name">Living Room</h4>
+                            <p class="device-card__description">The best concert without leaving your home. Feel like you are in the middle of the concert.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dolby Atmos Works -->
+                <div class="dolby-works">
+                    <h3 class="dolby-works__title">Dolby Atmos Works</h3>
+                    <div class="dolby-works__grid">
+                        <div class="work-card">
+                            <div class="work-card__cover">
+                                <img src="images RGstudio/Michael-Bubble.jpeg" alt="Michael Bublé - The Essential">
+                                <div class="work-card__overlay"></div>
+                            </div>
+                            <h4 class="work-card__artist">Michael Bublé</h4>
+                            <a href="https://music.apple.com" target="_blank" class="work-card__btn">Listen</a>
+                        </div>
+
+                        <div class="work-card">
+                            <div class="work-card__cover">
+                                <img src="images RGstudio/Carlos_Piano_Cover.jpg" alt="Carlos Rodgarman - Piano">
+                                <div class="work-card__overlay"></div>
+                                <div class="work-card__badge">COMING SOON</div>
+                            </div>
+                            <h4 class="work-card__artist">Carlos Rodgarman</h4>
+                            <span class="work-card__btn work-card__btn--disabled">Coming Soon</span>
+                        </div>
+
+                        <div class="work-card">
+                            <div class="work-card__cover">
+                                <img src="images RGstudio/Portada-GS-v2.webp" alt="Black Light Gospel Choir - Gospel Symphony">
+                                <div class="work-card__overlay"></div>
+                            </div>
+                            <h4 class="work-card__artist">Black Light Gospel Choir</h4>
+                            <a href="https://music.apple.com" target="_blank" class="work-card__btn">Listen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legendary Microphones Section -->
+        <section class="section section--dark legendary-mics-section" id="legendary-mics">
+            <div class="container">
+                <div class="legendary-mics-header">
+                    <h2 class="legendary-mics-header__title">Legendary microphones</h2>
+                    <p class="legendary-mics-header__subtitle">As It Sounds.</p>
+                    <p class="legendary-mics-header__subtitle">Infinite Possibilities.</p>
+                </div>
+
+                <div class="legendary-mics-carousel">
+                    <button class="carousel-btn carousel-btn--prev" aria-label="Previous">‹</button>
+                    <button class="carousel-btn carousel-btn--next" aria-label="Next">›</button>
+
+                    <div class="legendary-mics-grid">
+                    <!-- Neuman U47 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/u47.svg" alt="Neuman U47" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="neuman-u47">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Neuman</h4>
+                        <p class="mic-card__model">U47</p>
+                    </div>
+
+                    <!-- Neuman 149 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/149.svg" alt="Neuman 149" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="neuman-149">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Neuman</h4>
+                        <p class="mic-card__model">149</p>
+                    </div>
+
+                    <!-- Sennheser MD421 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/421.svg" alt="Sennheser MD421" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="sennheser-md421">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Sennheser</h4>
+                        <p class="mic-card__model">MD421</p>
+                    </div>
+
+                    <!-- Royer 122 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/122.svg" alt="Royer 122" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="royer-122">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Royer</h4>
+                        <p class="mic-card__model">122</p>
+                    </div>
+
+                    <!-- Philips C12 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/c12.svg" alt="Philips C12" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="philips-c12">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Philips</h4>
+                        <p class="mic-card__model">C12</p>
+                    </div>
+
+                    <!-- Neuman K185 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/k185.svg" alt="Neuman K185" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="neuman-k185">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Neuman</h4>
+                        <p class="mic-card__model">K185</p>
+                    </div>
+
+                    <!-- Sony C100 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/c100.svg" alt="Sony C100" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="sony-c100">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Sony</h4>
+                        <p class="mic-card__model">C100</p>
+                    </div>
+
+                    <!-- Shure SM58 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/sm58.svg" alt="Shure SM58" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="shure-sm58">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Shure</h4>
+                        <p class="mic-card__model">SM58</p>
+                    </div>
+
+                    <!-- Shure SM57 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/sm57.svg" alt="Shure SM57" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="shure-sm57">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">Shure</h4>
+                        <p class="mic-card__model">SM57</p>
+                    </div>
+
+                    <!-- AKG 112 -->
+                    <div class="mic-card">
+                        <div class="mic-card__image">
+                            <img src="assets/svg/112.svg" alt="AKG 112" class="mic-card__svg">
+                            <button class="mic-card__btn" data-mic="akg-112">+</button>
+                        </div>
+                        <h4 class="mic-card__brand">AKG</h4>
+                        <p class="mic-card__model">112</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Microphone Modal -->
+        <div class="mic-modal" id="micModal">
+            <div class="mic-modal__overlay"></div>
+            <div class="mic-modal__content">
+                <button class="mic-modal__close">&times;</button>
+                <div class="mic-modal__header">
+                    <h3 class="mic-modal__title"></h3>
+                </div>
+                <div class="mic-modal__body">
+                    <div class="mic-modal__diagram">
+                        <div class="mic-modal__diagram-placeholder">Polar Pattern Diagram</div>
+                    </div>
+                    <a href="#" class="mic-modal__download" download>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 14L6 10H8V4H12V10H14L10 14Z" fill="currentColor"/>
+                            <path d="M16 16H4V18H16V16Z" fill="currentColor"/>
+                        </svg>
+                        Download Manual
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipment Section -->
+        <section class="section section--dark equipment-section" id="equipment">
+            <div class="container container--full">
+                <div class="equipment-layout">
+                    <!-- Left Column -->
+                    <div class="equipment-column">
+                        <!-- Console -->
+                        <div class="equipment-block">
+                            <h3 class="equipment-block__title">Console</h3>
+                            <div class="equipment-table">
+                                <div class="equipment-table__header">
+                                    <span>Units</span>
+                                    <span>Model</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">AMS Neve Genesys Black G48 Channel Console</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Genesys G2D | Analogue Mixing in 3 Dimensions <span class="badge badge--new">NEW</span></span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Neve 88-Eq Card</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Neve 1084 Eq Card</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Neve Dynamics Card</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Microphones -->
+                        <div class="equipment-block">
+                            <h3 class="equipment-block__title">Microphones</h3>
+                            <div class="equipment-table">
+                                <div class="equipment-table__header">
+                                    <span>Units</span>
+                                    <span>Model</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Telefunken U47tx Vintage <span class="badge badge--new">NEW</span></span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Neumann KM 84 – Vintage Small Diaphragm Cardidoid Microphone</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Philips C12 A – Vintage Condenser Microphone</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Neumann M-149 – Tube Variable Dual-Diaphragm Microphone</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Royer R-122 – Phantom Power Ribbon Microphone</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Royer R-121 Studio Ribbon Microphone</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">AKG D112 – Dynamic Bass Drum Microphone</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Sony Model C-100 – Two Way Condenser Microphone</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Audix D6 Dynamic</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Instruments -->
+                        <div class="equipment-block">
+                            <h3 class="equipment-block__title">Instruments</h3>
+                            <div class="equipment-table">
+                                <div class="equipment-table__header">
+                                    <span>Units</span>
+                                    <span>Model</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Yamaha C7 – Grand Piano</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Fender Rhodes Mark II – Electric Piano</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Hammond SK-1 – 61 key Digital Stage Keyboard and Organ</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Akai Professional – Advance 61 Keyboard</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Roli Seaboard Rise 49 – Keyboard</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Little Phatty Moog – Monophonic Analog Synthesizer</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Computer -->
+                        <div class="equipment-block">
+                            <h3 class="equipment-block__title">Computer</h3>
+                            <div class="equipment-table">
+                                <div class="equipment-table__header">
+                                    <span>Units</span>
+                                    <span>Model</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Apple Mac Pro | Intel Xeon W de 12 núcleos a 3.1 GHz Turbo Boost de hasta 4.4 GHz</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Neve Genesys Control Plugin</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Pro Tools HDX 2 Card</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Logic Pro</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Melodyne 5</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Waves Plugins</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="equipment-column">
+                        <!-- Monitors System -->
+                        <div class="equipment-block">
+                            <h3 class="equipment-block__title">Monitors System</h3>
+                            <div class="equipment-table">
+                                <div class="equipment-table__header">
+                                    <span>Units</span>
+                                    <span>Model</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">5</span>
+                                    <span class="equipment-table__model">Behringer Monitor System P16</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Barefoot Micromain 45 – Audiio Monitor Pair</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Barefoot – Subwoofer4</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">5</span>
+                                    <span class="equipment-table__model">Genelec 8351A SAM™ Studio Monitor | L70 & Center <span class="badge badge--new">NEW</span></span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">4</span>
+                                    <span class="equipment-table__model">Genelec 8341A SAM™ Studio Monitor | LR Sides & LR Rear <span class="badge badge--new">NEW</span></span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">4</span>
+                                    <span class="equipment-table__model">Genelec 8320A SAM™ Studio Monitor | Reel <span class="badge badge--new">NEW</span></span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Genelec 7370A SAM™ Studio Subwoofer4 <span class="badge badge--new">NEW</span></span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Equipment - Hardware -->
+                        <div class="equipment-block">
+                            <h3 class="equipment-block__title">Equipment - Hardware</h3>
+                            <div class="equipment-table">
+                                <div class="equipment-table__header">
+                                    <span>Units</span>
+                                    <span>Model</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Antelope Galaxy 64 Synergy Core <span class="badge badge--new">NEW</span></span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">GMIU3502 – Two-Channel Microphone Preamplifier</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Manley Variable Mu – Mastering Stereo Limiter Compressor MU</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Inward Connections The Brute – Compressor</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">Inward Connections Brute II – Compressor</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Teletronix LA2A – Compressors</span>
+                                    <button class="equipment-table__btn">+</button>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Universal Audio 1176 – Compressors</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">SSL Fusion – Analog Processing Tool</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Bricasti M7 – Reverb Processor</span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">1</span>
+                                    <span class="equipment-table__model">AMS RMX16 Reverb <span class="badge badge--new">NEW</span></span>
+                                </div>
+                                <div class="equipment-table__row">
+                                    <span class="equipment-table__unit">2</span>
+                                    <span class="equipment-table__model">Eventide Eclipse – Digital Effects Processor</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section section--dark" id="booking">
+            <div class="container">
+                <div class="cta-section">
+                    <h2 class="heading-hero">Ready to Record?</h2>
+                    <p class="cta-section__text">
+                        Book your session at RG Studio and experience professional music production.
+                    </p>
+                    <a href="#contact" class="btn btn--link">CONTACT US</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__main">
+            <div class="footer__section">
+                <h3 class="footer__heading">Downloads</h3>
+                <ul class="footer__list">
+                    <li><a href="#" class="footer__link">EPK - Electronic Press Kit</a></li>
+                    <li><a href="#" class="footer__link">One Sheet - Project Info</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__section">
+                <img src="assets/svg/logo-inverted.svg" alt="Rodgarman" width="170" height="66">
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 0C4.477 0 0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.879V12.89h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.989C16.343 19.129 20 14.99 20 10c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 0C7.284 0 6.944.012 5.877.06 4.813.11 4.086.278 3.45.525a4.92 4.92 0 00-1.772 1.153A4.92 4.92 0 00.525 3.45C.278 4.086.109 4.813.06 5.877.012 6.944 0 7.284 0 10s.012 3.056.06 4.123c.05 1.064.218 1.791.465 2.427a4.92 4.92 0 001.153 1.772c.5.5 1.091.853 1.772 1.153.636.247 1.363.415 2.427.465C6.944 19.988 7.284 20 10 20s3.056-.012 4.123-.06c1.064-.05 1.791-.218 2.427-.465a4.92 4.92 0 001.772-1.153 4.92 4.92 0 001.153-1.772c.247-.636.415-1.363.465-2.427.048-1.067.06-1.407.06-4.123s-.012-3.056-.06-4.123c-.05-1.064-.218-1.791-.465-2.427a4.92 4.92 0 00-1.153-1.772A4.92 4.92 0 0016.55.525C15.914.278 15.187.109 14.123.06 13.056.012 12.716 0 10 0zm0 1.802c2.67 0 2.986.01 4.04.058.976.045 1.505.207 1.858.344.467.182.8.398 1.15.748.35.35.566.683.748 1.15.137.353.3.882.344 1.857.048 1.055.058 1.37.058 4.04 0 2.672-.01 2.987-.058 4.042-.045.975-.207 1.504-.344 1.857a3.097 3.097 0 01-.748 1.15c-.35.35-.683.566-1.15.748-.353.137-.882.3-1.857.344-1.054.048-1.37.058-4.041.058-2.67 0-2.987-.01-4.04-.058-.976-.045-1.505-.207-1.858-.344a3.097 3.097 0 01-1.15-.748 3.098 3.098 0 01-.748-1.15c-.137-.353-.3-.882-.344-1.857-.048-1.055-.058-1.37-.058-4.041 0-2.67.01-2.986.058-4.04.045-.976.207-1.505.344-1.858.182-.467.398-.8.748-1.15.35-.35.683-.566 1.15-.748.353-.137.882-.3 1.857-.344 1.055-.048 1.37-.058 4.041-.058z"/>
+                            <path d="M10 13.333a3.333 3.333 0 110-6.666 3.333 3.333 0 010 6.666zm0-8.468a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm6.538-.203a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M18.335 0H1.665C.747 0 0 .746 0 1.665v16.67C0 19.254.746 20 1.665 20h16.67C19.254 20 20 19.254 20 18.335V1.665C20 .747 19.254 0 18.335 0zM5.932 17.065H2.968V7.516h2.964v9.549zM4.45 6.22a1.717 1.717 0 110-3.434 1.717 1.717 0 010 3.434zm12.615 10.845h-2.963v-4.645c0-1.107-.02-2.53-1.542-2.53-1.543 0-1.78 1.204-1.78 2.449v4.726H8.817V7.516h2.844v1.305h.04c.396-.75 1.363-1.542 2.806-1.542 3.002 0 3.558 1.977 3.558 4.547v5.239z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer__section">
+                <h3 class="footer__heading">Group RG</h3>
+                <ul class="footer__list">
+                    <li><a href="#" class="footer__link">Rodgar Band Music.ink</a></li>
+                    <li><a href="#" class="footer__link">RG Corp</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__divider"></div>
+
+        <div class="footer__bottom">
+            <p class="footer__copyright">
+                Rogarbandmusic.ink is a corporation registered in the State of California.
+            </p>
+            <button class="footer__back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <svg width="8" height="22" viewBox="0 0 8 22" fill="currentColor">
+                    <path d="M4 0L0 4h3v18h2V4h3L4 0z"/>
+                </svg>
+            </button>
+        </div>
+    </footer>
+
+    <!-- JS Global -->
+    <script src="js/main.js"></script>
+    <!-- JS Específico de RG Studio -->
+    <script src="js/pages/rg-studio.js"></script>
+</body>
+</html>

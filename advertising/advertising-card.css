@@ -1,0 +1,365 @@
+/* ===========================================
+   ADVERTISING CARD COMPONENT
+   Similar design to Film Card for consistency
+   =========================================== */
+
+/* ---------- Base Container ---------- */
+.advertising-card {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    isolation: isolate;
+    cursor: pointer;
+}
+
+.advertising-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Image Section ---------- */
+.advertising-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.advertising-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    opacity: 0;
+}
+
+.advertising-card__image.loaded {
+    opacity: 1;
+}
+
+.advertising-card:hover .advertising-card__image {
+    transform: scale(1.06);
+}
+
+/* ---------- Overlay Effects ---------- */
+.advertising-card__play-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 60%,
+        rgba(0, 0, 0, 0.65) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.advertising-card:hover .advertising-card__play-overlay {
+    opacity: 1;
+}
+
+.advertising-card__play-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.advertising-card:hover .advertising-card__play-button {
+    transform: scale(1);
+}
+
+.advertising-card__play-button:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.advertising-card__play-icon {
+    width: 0;
+    height: 0;
+    border-left: 16px solid #1a1a1a;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    margin-left: 4px;
+}
+
+/* ---------- Category Badge ---------- */
+.advertising-card__badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.advertising-card__badge--series {
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+}
+
+.advertising-card__badge--product {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a;
+}
+
+.advertising-card__badge--logo {
+    background: rgba(0, 122, 255, 0.95);
+    color: #fff;
+}
+
+/* ---------- Content Section ---------- */
+.advertising-card__info {
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.advertising-card__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+    min-height: auto;
+}
+
+.advertising-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.advertising-card__client,
+.advertising-card__category {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #777;
+    line-height: 1.5;
+}
+
+.advertising-card__year {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #007aff;
+    margin-top: 0.25rem;
+}
+
+/* ---------- Modal Styles ---------- */
+.advertising-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.advertising-modal.active {
+    display: flex;
+}
+
+.advertising-modal__content {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    background: #1a1a1a;
+    border-radius: 16px;
+    overflow: hidden;
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.advertising-modal__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.advertising-modal__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.advertising-modal__video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #000;
+}
+
+.advertising-modal__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.advertising-modal__info {
+    padding: 2.5rem;
+    background: #1a1a1a;
+}
+
+.advertising-modal__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.advertising-modal__meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.advertising-modal__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.advertising-modal__meta-label {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.advertising-modal__meta-value {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.advertising-modal__description {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .advertising-card__title {
+        font-size: 1rem;
+    }
+
+    .advertising-card__client,
+    .advertising-card__category,
+    .advertising-card__year {
+        font-size: 0.75rem;
+    }
+
+    .advertising-modal__content {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 12px;
+    }
+
+    .advertising-modal__title {
+        font-size: 1.5rem;
+    }
+
+    .advertising-modal__info {
+        padding: 1.5rem;
+    }
+
+    .advertising-modal__meta {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .advertising-card__info {
+        padding: 1.25rem;
+    }
+
+    .advertising-card__title {
+        font-size: 0.9rem;
+    }
+
+    .advertising-modal__title {
+        font-size: 1.25rem;
+    }
+
+    .advertising-modal__info {
+        padding: 1.25rem;
+    }
+}

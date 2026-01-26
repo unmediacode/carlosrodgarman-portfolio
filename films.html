@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films & TV - Carlos Rodgarman</title>
+    <meta name="description" content="Explore Carlos Rodgarman's work in film and television as composer, mixing engineer, and producer.">
+
+    <!-- Preconnect para fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <!-- CSS del Film Card -->
+    <link rel="stylesheet" href="films/film-card.css">
+
+    <!-- CSS específico de Films -->
+    <link rel="stylesheet" href="css/pages/films.css">
+
+    <!-- CSS Responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="logo" aria-label="Volver al inicio">
+                <img src="assets/logos/logo.svg" alt="Rodgarman">
+            </a>
+
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">HOME</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="rg-studio.html" class="nav__link">RG<br>STUDIO</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="music.html" class="nav__link">MUSIC</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="films.html" class="nav__link nav__link--active">FILMS<br>TV</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="advertising.html" class="nav__link">ADVERTISING</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#technical" class="nav__link">TECHNICAL<br>videos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#blog" class="nav__link">BLOG</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">ABOUT</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Films Hero Section (Telón) -->
+    <section class="films-hero">
+        <h1 class="films-hero__title">FILMS & TV</h1>
+        <p class="films-hero__subtitle">Composer · Mixing Engineer · Producer</p>
+    </section>
+
+    <main class="main">
+        <!-- Films Grid Section -->
+        <section class="section section--light films-grid-section">
+            <div class="container container--wide">
+                <div id="filmsGrid" class="films-grid">
+                    <!-- Las tarjetas se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">© 2026 Carlos Rodgarman. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="films/film-card.js"></script>
+    <script>
+        // Initialize Film cards with progressive loading
+        const heroSection = document.querySelector('.films-hero');
+        const gridContainer = document.getElementById('filmsGrid');
+        const BATCH_SIZE = 8; // Load 8 films at a time (2 rows of 4)
+
+        // Load films progressively
+        fetch('films/films-data.json')
+            .then(response => response.json())
+            .then(films => {
+                let loadedCount = 0;
+
+                // Function to load a batch of films
+                function loadBatch(startIndex) {
+                    const endIndex = Math.min(startIndex + BATCH_SIZE, films.length);
+                    const batch = films.slice(startIndex, endIndex);
+
+                    batch.forEach((film, batchIndex) => {
+                        const cardElement = document.createElement('div');
+                        cardElement.className = 'film-card';
+                        cardElement.dataset.filmId = film.id;
+                        gridContainer.appendChild(cardElement);
+
+                        // Create card instance
+                        new FilmCard(cardElement, film);
+
+                        // Reveal animation
+                        const globalIndex = startIndex + batchIndex;
+                        setTimeout(() => {
+                            cardElement.classList.add('reveal');
+                        }, 700 + (globalIndex * 50)); // Slightly slower stagger for films
+                    });
+
+                    loadedCount += batch.length;
+
+                    // Load next batch if there are more films
+                    if (loadedCount < films.length) {
+                        setTimeout(() => {
+                            loadBatch(loadedCount);
+                        }, 400); // Small delay between batches
+                    }
+                }
+
+                // Open curtain immediately
+                setTimeout(() => {
+                    heroSection.classList.add('curtain-open');
+                    // Start loading first batch after curtain starts opening
+                    loadBatch(0);
+                }, 300);
+            })
+            .catch(error => {
+                console.error('Error loading film data:', error);
+                // Open curtain even if there's an error
+                setTimeout(() => {
+                    heroSection.classList.add('curtain-open');
+                }, 500);
+            });
+    </script>
+</body>
+</html>

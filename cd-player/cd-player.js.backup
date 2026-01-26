@@ -1,0 +1,369 @@
+/**
+ * CD Player Component
+ * Interactive album player with expandable panels
+ */
+
+class CDPlayer {
+    constructor(element, data) {
+        this.element = element;
+        this.data = data;
+        this.isPlaying = false;
+        this.audio = null;
+
+        this.init();
+    }
+
+    init() {
+        this.render();
+        this.applyPanelColor();
+        this.attachEventListeners();
+        this.createAudioElement();
+    }
+
+    applyPanelColor() {
+        // Aplicar color personalizado al panel usando CSS variable
+        if (this.data.panelColor) {
+            this.element.style.setProperty('--panel-color', this.data.panelColor);
+        }
+    }
+
+    render() {
+        const html = `
+            <div class="cd-player__cover">
+                <img src="${this.data.coverImage}" alt="${this.data.title}" class="cd-player__cover-image">
+                <div class="cd-player__cover-overlay"></div>
+
+                <div class="cd-player__controls">
+                    <button class="cd-player__btn cd-player__btn--play" aria-label="Play">
+                        <svg viewBox="0 0 24 24" class="icon-play">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <button class="cd-player__btn cd-player__btn--info" aria-label="More info">
+                        +
+                    </button>
+                </div>
+            </div>
+
+            <div class="cd-player__work-panel">
+                <div class="cd-player__work-content">
+                    <h3 class="cd-player__work-artist">${this.data.artist}</h3>
+                    <p class="cd-player__work-title">${this.data.title}</p>
+                    <p class="cd-player__work-year">${this.data.year}</p>
+
+                    <div class="cd-player__progress">
+                        <div class="cd-player__progress-bar">
+                            <div class="cd-player__progress-fill"></div>
+                            <div class="cd-player__progress-thumb"></div>
+                        </div>
+                        <div class="cd-player__progress-time">
+                            <span class="cd-player__time-current">0:00</span>
+                            <span class="cd-player__time-total">0:00</span>
+                        </div>
+                    </div>
+
+                    <div class="cd-player__work-links">
+                        <a href="${this.data.links.appleMusic}" target="_blank" class="cd-player__work-link" aria-label="Apple Music">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.997 6.124c0-.738-.065-1.47-.24-2.19-.317-1.31-1.062-2.31-2.18-3.043-.717-.473-1.49-.656-2.325-.656-1.005 0-2.024.177-3.043.354-1.005.177-2.024.394-3.08.65-.71.17-1.437.394-2.18.65-.71.237-1.437.473-2.164.71-.71.236-1.437.473-2.164.71-.71.236-1.437.473-2.164.71-.71.236-1.437.473-2.164.71-1.062.354-1.891.866-2.532 1.555-.65.69-1.062 1.497-1.24 2.395-.177.866-.177 1.772-.177 2.678 0,.906 0 1.772.177 2.678.177.866.59 1.64 1.24 2.325.65.69 1.47 1.202 2.532 1.555.71.236 1.437.473 2.164.71.71.236 1.437.473 2.164.71.71.236 1.437.473 2.164.71.71.236 1.437.473 2.164.71 1.005.236 2.024.473 3.08.65 1.005.177 2.024.354 3.043.354.827 0 1.608-.236 2.325-.71 1.118-.65 1.863-1.732 2.18-3.043.177-.71.24-1.452.24-2.19V6.124z"/></svg>
+                        </a>
+                        <a href="${this.data.links.spotify}" target="_blank" class="cd-player__work-link" aria-label="Spotify">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                        </a>
+                        <a href="${this.data.links.amazon}" target="_blank" class="cd-player__work-link" aria-label="Amazon Music">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.512.405-1.06.745-1.67 1.02a15.558 15.558 0 0 1-5.11 1.13c-3.96 0-7.684-.96-11.175-2.88-.294-.16-.354-.314-.188-.524.12-.16.21-.24.284-.293zm14.26-2.654c.15-.115.27-.123.36-.022.09.1.076.214-.045.36-1.92 2.31-4.59 3.465-8.01 3.465-2.02 0-3.87-.48-5.55-1.44-.195-.116-.285-.27-.27-.48.015-.196.135-.315.36-.36 1.23-.24 2.46-.36 3.69-.36 2.58 0 4.95.6 7.11 1.8.21.12.39.18.54.18.15 0 .27-.06.36-.18z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-player__modal">
+                <div class="cd-player__modal-content">
+                    <button class="cd-player__modal-close" aria-label="Close">&times;</button>
+
+                    <div class="cd-player__modal-info">
+                        <h2 class="cd-player__modal-artist">${this.data.artist}</h2>
+                        <h3 class="cd-player__modal-title">${this.data.title}</h3>
+                        <p class="cd-player__modal-year">${this.data.year}</p>
+                    </div>
+
+                    <div class="cd-player__volume">
+                        <label class="cd-player__volume-label">Volume</label>
+                        <input type="range" min="0" max="100" value="70" class="cd-player__volume-slider">
+                    </div>
+
+                    <div class="cd-player__links">
+                        <a href="${this.data.links.appleMusic}" target="_blank" class="cd-player__link">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23.997 6.124c0-.738-.065-1.47-.24-2.19-.317-1.31-1.062-2.31-2.18-3.043a5.016 5.016 0 0 0-1.877-.726 10.86 10.86 0 0 0-2.185-.135c-1.264 0-2.52.167-3.77.5-1.25.333-2.54.834-3.86 1.49a38.375 38.375 0 0 0-3.84 2.055c-1.23.71-2.41 1.48-3.54 2.31-.59.43-1.17.89-1.73 1.38-.56.48-1.1.99-1.62 1.53-.52.54-1.01 1.12-1.46 1.73-.45.61-.87 1.25-1.25 1.92-.76 1.34-1.35 2.77-1.76 4.28-.2.75-.36 1.51-.48 2.27-.12.77-.2 1.54-.24 2.32-.04.78-.06 1.56-.06 2.35 0 .78.02 1.56.06 2.35.04.78.12 1.56.24 2.32.12.77.28 1.52.48 2.27.41 1.51 1 2.94 1.76 4.28.38.67.8 1.31 1.25 1.92.45.61.94 1.19 1.46 1.73.52.54 1.06 1.05 1.62 1.53.56.48 1.14.95 1.73 1.38 1.13.83 2.31 1.6 3.54 2.31 1.23.71 2.5 1.35 3.84 2.05 1.32.66 2.61 1.16 3.86 1.49 1.25.33 2.51.5 3.77.5.74 0 1.48-.05 2.19-.14.7-.09 1.39-.24 2.07-.43.68-.19 1.35-.43 2-.72.65-.29 1.28-.63 1.89-1.02 1.11-.72 1.86-1.73 2.18-3.04.17-.71.24-1.45.24-2.19V6.124z"/>
+                            </svg>
+                            Apple Music
+                        </a>
+                        <a href="${this.data.links.spotify}" target="_blank" class="cd-player__link">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                            Spotify
+                        </a>
+                        <a href="${this.data.links.amazon}" target="_blank" class="cd-player__link">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.512.405-1.06.745-1.67 1.02a15.558 15.558 0 0 1-5.11 1.13c-3.96 0-7.684-.96-11.175-2.88-.294-.16-.354-.314-.188-.524.12-.16.21-.24.284-.293zm14.26-2.654c.15-.115.27-.123.36-.022.09.1.076.214-.045.36-1.92 2.31-4.59 3.465-8.01 3.465-2.02 0-3.87-.48-5.55-1.44-.195-.116-.285-.27-.27-.48.015-.196.135-.315.36-.36 1.23-.24 2.46-.36 3.69-.36 2.58 0 4.95.6 7.11 1.8.21.12.39.18.54.18.15 0 .27-.06.36-.18zm-1.845-1.62c-.24-.24-.39-.54-.45-.9-.06-.36.03-.69.27-.99.72-.9 1.575-1.35 2.565-1.35.705 0 1.305.255 1.8.765.495.51.765 1.125.81 1.845.045.72-.18 1.35-.675 1.89-.495.54-1.11.81-1.845.81-.72 0-1.335-.27-1.845-.81zm10.125-3.735c.24.48.36 1.02.36 1.62 0 .9-.27 1.665-.81 2.295-.54.63-1.215.945-2.025.945-.72 0-1.335-.27-1.845-.81-.495-.54-.75-1.2-.765-1.98a2.78 2.78 0 0 1 .765-1.98c.51-.54 1.125-.81 1.845-.81.705 0 1.305.255 1.8.765.495.51.765 1.125.81 1.845.045.72-.18 1.35-.675 1.89z"/>
+                            </svg>
+                            Amazon
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        this.element.innerHTML = html;
+    }
+
+    createAudioElement() {
+        // Only create audio if audioFile is provided
+        if (!this.data.audioFile || this.data.audioFile === '') {
+            return;
+        }
+
+        this.audio = new Audio(this.data.audioFile);
+        this.audio.volume = 0.7;
+
+        // Update play button when audio ends
+        this.audio.addEventListener('ended', () => {
+            this.isPlaying = false;
+            this.updatePlayButton();
+            this.closeWorkPanel();
+        });
+
+        // Update progress bar
+        this.audio.addEventListener('timeupdate', () => {
+            this.updateProgress();
+        });
+
+        // Update duration when loaded
+        this.audio.addEventListener('loadedmetadata', () => {
+            this.updateDuration();
+        });
+    }
+
+    updateProgress() {
+        if (!this.audio) return;
+
+        const progressFill = this.element.querySelector('.cd-player__progress-fill');
+        const progressThumb = this.element.querySelector('.cd-player__progress-thumb');
+        const currentTimeEl = this.element.querySelector('.cd-player__time-current');
+
+        const percent = (this.audio.currentTime / this.audio.duration) * 100 || 0;
+
+        if (progressFill) {
+            progressFill.style.width = percent + '%';
+        }
+
+        if (progressThumb) {
+            progressThumb.style.left = percent + '%';
+        }
+
+        if (currentTimeEl) {
+            currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
+        }
+    }
+
+    updateDuration() {
+        if (!this.audio) return;
+
+        const totalTimeEl = this.element.querySelector('.cd-player__time-total');
+
+        if (totalTimeEl) {
+            totalTimeEl.textContent = this.formatTime(this.audio.duration);
+        }
+    }
+
+    formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    attachEventListeners() {
+        const playBtn = this.element.querySelector('.cd-player__btn--play');
+        const infoBtn = this.element.querySelector('.cd-player__btn--info');
+        const modal = this.element.querySelector('.cd-player__modal');
+        const closeBtn = this.element.querySelector('.cd-player__modal-close');
+        const volumeSlider = this.element.querySelector('.cd-player__volume-slider');
+
+        // Play/Pause button
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.togglePlay();
+        });
+
+        // Info button
+        infoBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.openModal();
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            this.closeModal();
+        });
+
+        // Close modal on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closeModal();
+            }
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', (e) => {
+            if (this.audio) {
+                this.audio.volume = e.target.value / 100;
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+
+        // Progress bar click to seek
+        const progressBar = this.element.querySelector('.cd-player__progress-bar');
+        if (progressBar) {
+            progressBar.addEventListener('click', (e) => {
+                if (!this.audio) return;
+
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                this.audio.currentTime = percent * this.audio.duration;
+            });
+        }
+    }
+
+    togglePlay() {
+        if (!this.audio) {
+            // Si no hay audio, solo abrimos el panel
+            if (this.isPlaying) {
+                this.isPlaying = false;
+                this.updatePlayButton();
+                this.closeWorkPanel();
+            } else {
+                this.isPlaying = true;
+                this.updatePlayButton();
+                this.openWorkPanel();
+            }
+            return;
+        }
+
+        if (this.isPlaying) {
+            this.pause();
+        } else {
+            this.play();
+        }
+    }
+
+    play() {
+        if (this.audio) {
+            this.audio.play();
+            this.isPlaying = true;
+            this.updatePlayButton();
+            this.openWorkPanel();
+        }
+    }
+
+    pause() {
+        if (this.audio) {
+            this.audio.pause();
+            this.isPlaying = false;
+            this.updatePlayButton();
+            this.closeWorkPanel();
+        }
+    }
+
+    updatePlayButton() {
+        const playBtn = this.element.querySelector('.cd-player__btn--play');
+        const icon = playBtn.querySelector('svg');
+
+        if (this.isPlaying) {
+            // Pause icon
+            icon.innerHTML = '<path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>';
+        } else {
+            // Play icon
+            icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        }
+    }
+
+    openWorkPanel() {
+        const panel = this.element.querySelector('.cd-player__work-panel');
+        panel.classList.add('active');
+    }
+
+    closeWorkPanel() {
+        const panel = this.element.querySelector('.cd-player__work-panel');
+        panel.classList.remove('active');
+    }
+
+    openModal() {
+        const modal = this.element.querySelector('.cd-player__modal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeModal() {
+        const modal = this.element.querySelector('.cd-player__modal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    destroy() {
+        if (this.audio) {
+            this.audio.pause();
+            this.audio = null;
+        }
+    }
+}
+
+// Initialize all CD players on the page
+function initCDPlayers(dataUrl) {
+    fetch(dataUrl)
+        .then(response => response.json())
+        .then(albums => {
+            // Check if there's a grid container (for music.html)
+            const gridContainer = document.getElementById('albumsGrid');
+
+            if (gridContainer) {
+                // Create player elements for all albums
+                albums.forEach(album => {
+                    const playerElement = document.createElement('div');
+                    playerElement.className = 'cd-player';
+                    playerElement.dataset.albumId = album.id;
+                    gridContainer.appendChild(playerElement);
+
+                    new CDPlayer(playerElement, album);
+                });
+            } else {
+                // Original behavior for pre-existing .cd-player elements
+                const playerElements = document.querySelectorAll('.cd-player');
+
+                playerElements.forEach((element, index) => {
+                    const albumId = element.dataset.albumId;
+                    const albumData = albums.find(album => album.id === albumId) || albums[index];
+
+                    if (albumData) {
+                        new CDPlayer(element, albumData);
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error loading CD player data:', error);
+        });
+}
+
+// Export for use in other files
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { CDPlayer, initCDPlayers };
+}

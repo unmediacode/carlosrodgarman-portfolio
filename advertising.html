@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertising - Carlos Rodgarman</title>
+    <meta name="description" content="Explore Carlos Rodgarman's work in advertising and commercial production.">
+
+    <!-- Preconnect para fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <!-- CSS del Advertising Card -->
+    <link rel="stylesheet" href="advertising/advertising-card.css">
+
+    <!-- CSS específico de Advertising -->
+    <link rel="stylesheet" href="css/pages/advertising.css">
+
+    <!-- CSS Responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="logo" aria-label="Volver al inicio">
+                <img src="assets/logos/logo.svg" alt="Rodgarman">
+            </a>
+
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">HOME</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="rg-studio.html" class="nav__link">RG<br>STUDIO</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="music.html" class="nav__link">MUSIC</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="films.html" class="nav__link">FILMS<br>TV</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="advertising.html" class="nav__link nav__link--active">ADVERTISING</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#technical" class="nav__link">TECHNICAL<br>videos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#blog" class="nav__link">BLOG</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">ABOUT</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Advertising Hero Section (Telón) -->
+    <section class="advertising-hero">
+        <h1 class="advertising-hero__title">ADVERTISING</h1>
+        <p class="advertising-hero__subtitle">Commercial Production · TV Series · Products</p>
+    </section>
+
+    <main class="main">
+        <!-- Advertising Grid Section -->
+        <section class="section section--light advertising-grid-section">
+            <div class="container container--wide">
+                <!-- Filter Menu -->
+                <div class="advertising-filters">
+                    <button class="advertising-filter-btn active" data-filter="all">
+                        All Work
+                    </button>
+                    <button class="advertising-filter-btn" data-filter="DVD SERIES">
+                        DVD Series
+                    </button>
+                    <button class="advertising-filter-btn" data-filter="PRODUCT">
+                        Products
+                    </button>
+                    <button class="advertising-filter-btn" data-filter="LOGO">
+                        Logos
+                    </button>
+                </div>
+
+                <div id="advertisingGrid" class="advertising-grid">
+                    <!-- Las tarjetas se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">© 2026 Carlos Rodgarman. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="advertising/advertising-card.js"></script>
+    <script>
+        // Initialize Advertising cards with filtering
+        const heroSection = document.querySelector('.advertising-hero');
+        const gridContainer = document.getElementById('advertisingGrid');
+        const filterButtons = document.querySelectorAll('.advertising-filter-btn');
+
+        let allItems = [];
+        let currentFilter = 'all';
+        let cardInstances = [];
+
+        // Load advertising items
+        fetch('advertising/advertising-data.json')
+            .then(response => response.json())
+            .then(items => {
+                allItems = items;
+
+                // Update filter button counts
+                updateFilterCounts();
+
+                // Initial load - show all items
+                renderItems(allItems);
+
+                // Open curtain
+                setTimeout(() => {
+                    heroSection.classList.add('curtain-open');
+                }, 300);
+            })
+            .catch(error => {
+                console.error('Error loading advertising data:', error);
+                setTimeout(() => {
+                    heroSection.classList.add('curtain-open');
+                }, 500);
+            });
+
+        // Filter button handlers
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+
+                // Update active state
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter items
+                currentFilter = filter;
+                filterItems(filter);
+            });
+        });
+
+        // Update filter counts
+        function updateFilterCounts() {
+            const counts = {
+                'all': allItems.length,
+                'DVD SERIES': allItems.filter(item => item.category === 'DVD SERIES').length,
+                'PRODUCT': allItems.filter(item => item.category === 'PRODUCT').length,
+                'LOGO': allItems.filter(item => item.category === 'LOGO').length
+            };
+
+            filterButtons.forEach(button => {
+                const filter = button.dataset.filter;
+                button.dataset.count = counts[filter] || 0;
+            });
+        }
+
+        // Filter items
+        function filterItems(filter) {
+            // Add filtering class for transition
+            gridContainer.classList.add('filtering');
+
+            // Filter the items
+            const filteredItems = filter === 'all'
+                ? allItems
+                : allItems.filter(item => item.category === filter);
+
+            // Wait for fade out, then update
+            setTimeout(() => {
+                renderItems(filteredItems);
+                gridContainer.classList.remove('filtering');
+            }, 150);
+        }
+
+        // Render items
+        function renderItems(items) {
+            // Clear existing cards
+            gridContainer.innerHTML = '';
+            cardInstances.forEach(instance => instance.destroy && instance.destroy());
+            cardInstances = [];
+
+            // Create new cards
+            items.forEach((item, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'advertising-card';
+                cardElement.dataset.itemId = item.id;
+                cardElement.dataset.category = item.category;
+                gridContainer.appendChild(cardElement);
+
+                // Create card instance
+                const cardInstance = new AdvertisingCard(cardElement, item);
+                cardInstances.push(cardInstance);
+
+                // Reveal animation with stagger
+                setTimeout(() => {
+                    cardElement.classList.add('reveal');
+                }, 50 * index);
+            });
+        }
+    </script>
+</body>
+</html>
