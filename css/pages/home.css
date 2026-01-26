@@ -94,6 +94,7 @@
 .featured-project--alt {
     position: relative;
     z-index: 2;
+    will-change: transform;
 }
 
 .featured-project--alt::before {

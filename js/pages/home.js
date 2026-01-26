@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (michaelSection && leftPart && rightPart && gospelSection) {
         let sectionTop = 0;
         let isSticky = false;
-        let animationDistance = window.innerHeight * 1.2; // Distance to complete animation (120% of viewport height)
+        let animationDistance = window.innerHeight * 2; // Distance to complete animation (2x viewport height)
         let animationComplete = false;
+        let gospelOriginalTop = 0;
 
         // Update section position on resize
         function updateSectionPosition() {
@@ -57,13 +58,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Block Gospel Symphony section until parallax animation completes
                 if (progress < 1) {
-                    // Animation not complete - keep Gospel Symphony below
-                    const pushDown = (1 - progress) * animationDistance;
+                    // Animation not complete - keep Gospel Symphony completely below viewport
+                    // Push it down by the full animation distance plus its own height
+                    const pushDown = animationDistance + window.innerHeight;
                     gospelSection.style.transform = `translateY(${pushDown}px)`;
+                    gospelSection.style.transition = 'none'; // No transition during parallax
                     animationComplete = false;
                 } else {
                     // Animation complete - allow Gospel Symphony to pass over
                     gospelSection.style.transform = 'translateY(0)';
+                    gospelSection.style.transition = 'transform 0.3s ease-out';
                     animationComplete = true;
                 }
             } else {
@@ -71,7 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Reset to initial positions
                 leftPart.style.transform = 'translateX(-100vw)';
                 rightPart.style.transform = 'translateX(100vw)';
-                gospelSection.style.transform = 'translateY(0)';
+                gospelSection.style.transform = 'none';
+                gospelSection.style.transition = '';
             }
         }
 
