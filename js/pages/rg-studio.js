@@ -340,4 +340,108 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.log('Microphone carousel not found');
     }
+
+    // ===========================================
+    // EQUIPMENT TABLE LINKS
+    // ===========================================
+
+    // Normalize text for comparison
+    function normalizeText(text) {
+        return text.toLowerCase()
+            .trim()
+            .replace(/\s+/g, ' ')
+            .replace(/–/g, '-')
+            .replace(/—/g, '-')
+            .replace(/\u2013/g, '-')
+            .replace(/\u2014/g, '-')
+            .replace(/\|/g, '')
+            .replace(/™/g, '')
+            .replace(/®/g, '');
+    }
+
+    // Check if two equipment names match
+    function namesMatch(name1, name2) {
+        const norm1 = normalizeText(name1);
+        const norm2 = normalizeText(name2);
+
+        // Exact match
+        if (norm1 === norm2) return true;
+
+        // One contains the other
+        if (norm1.includes(norm2) || norm2.includes(norm1)) return true;
+
+        // Extract key parts (brand + model number)
+        const extractKey = (str) => {
+            const parts = str.split(/[\s-]+/);
+            return parts.slice(0, 3).join(' '); // First 3 words usually contain brand + model
+        };
+
+        const key1 = extractKey(norm1);
+        const key2 = extractKey(norm2);
+
+        return key1.includes(key2) || key2.includes(key1);
+    }
+
+    // Load equipment links from JSON
+    fetch('data/equipment-links.json')
+        .then(response => response.json())
+        .then(data => {
+            // For each section in the JSON
+            data.forEach(section => {
+                // Find the equipment block by section title
+                const blocks = document.querySelectorAll('.equipment-block');
+
+                blocks.forEach(block => {
+                    const blockTitle = block.querySelector('.equipment-block__title');
+                    if (!blockTitle) return;
+
+                    const blockTitleText = normalizeText(blockTitle.textContent);
+                    const sectionTitleNorm = normalizeText(section.section);
+
+                    // Match the section
+                    if (blockTitleText.includes(sectionTitleNorm) || sectionTitleNorm.includes(blockTitleText)) {
+                        const rows = block.querySelectorAll('.equipment-table__row');
+
+                        // For each row in the table
+                        rows.forEach(row => {
+                            const modelElement = row.querySelector('.equipment-table__model');
+                            if (!modelElement) return;
+
+                            const rowModelText = modelElement.textContent;
+                            const btn = row.querySelector('.equipment-table__btn');
+
+                            if (!btn) return;
+
+                            // Try to find matching item in JSON
+                            let matchedItem = null;
+
+                            for (const item of section.items) {
+                                if (namesMatch(rowModelText, item.name)) {
+                                    matchedItem = item;
+                                    break;
+                                }
+                            }
+
+                            if (matchedItem && matchedItem.url) {
+                                // Add link functionality
+                                btn.style.cursor = 'pointer';
+                                btn.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    window.open(matchedItem.url, '_blank');
+                                });
+                            } else {
+                                // Hide button if no URL
+                                btn.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+
+            console.log('Equipment links loaded successfully');
+        })
+        .catch(error => {
+            console.error('Error loading equipment links:', error);
+        });
 });

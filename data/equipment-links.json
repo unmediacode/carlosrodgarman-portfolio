@@ -1,0 +1,288 @@
+[
+  {
+    "section": "Console",
+    "items": [
+      {
+        "name": "AMS Neve Genesys Black G48 Channel Console",
+        "url": "https://www.ams-neve.com/neve-genesys-black-console-56-p.asp"
+      },
+      {
+        "name": "Genesys G3D | Analogue Mixing in 3 Dimensions",
+        "url": "https://www.ams-neve.com/neve-genesys-black-console-56-p.asp"
+      },
+      {
+        "name": "Neve 88-R EQ Card",
+        "url": null
+      },
+      {
+        "name": "Neve 1084 EQ Card",
+        "url": null
+      },
+      {
+        "name": "Neve Dynamics Card",
+        "url": null
+      }
+    ]
+  },
+  {
+    "section": "Microphones",
+    "items": [
+      {
+        "name": "Telefunken U47n Vintage",
+        "url": "https://www.telefunken-elektroakustik.com/microphones/u47"
+      },
+      {
+        "name": "Neumann KM 84 – Vintage Small Diaphragm Cardioid Microphone",
+        "url": "https://en-de.neumann.com/km-84"
+      },
+      {
+        "name": "Phillips C12 A – Vintage Condensor Microphone",
+        "url": null
+      },
+      {
+        "name": "Neumann M 149 – Tube Variable Dual-Diaphragm Microphone",
+        "url": "https://en-de.neumann.com/m-149-tube"
+      },
+      {
+        "name": "Royer R 122 – Phantom Power Ribbon Microphone",
+        "url": "https://royerlabs.com/r-122-mkii/"
+      },
+      {
+        "name": "Royer R-121 Studio Ribbon Microphone",
+        "url": "https://royerlabs.com/r-121/"
+      },
+      {
+        "name": "AKG D112 – Dynamic Bass Drum Microphone",
+        "url": "https://www.akg.com/Microphones/Dynamic%20Microphones/D112MkII.html"
+      },
+      {
+        "name": "Sony Model C-100 – Two Way Condenser Microphone",
+        "url": "https://pro.sony/es_ES/products/studio-microphones/c-100"
+      },
+      {
+        "name": "Audix D6 Dynamic",
+        "url": "https://audixusa.com/products/d6/"
+      }
+    ]
+  },
+  {
+    "section": "Instruments",
+    "items": [
+      {
+        "name": "Yamaha C7 – Grand Piano",
+        "url": "https://es.yamaha.com/es/products/musical_instruments/pianos/grand_pianos/index.html"
+      },
+      {
+        "name": "Fender Rhodes Mark II – Electric Piano",
+        "url": "http://www.fenderrhodes.com/pianos/mark2.html"
+      },
+      {
+        "name": "Hammond Sk-1 – 61 Key Digital Stage Keyboard and Organ",
+        "url": "http://hammondorganco.com/products/portable-organs/"
+      },
+      {
+        "name": "Akai Professional – Advance 61 Keyboard",
+        "url": "https://www.akaipro.com/advance-61"
+      },
+      {
+        "name": "Roli Seaboard Rise 49 – Keyboard",
+        "url": "https://roli.com/products/seaboard/rise-49"
+      },
+      {
+        "name": "Little Phatty Moog – Monophonic Analog Synthesizer",
+        "url": "http://www.vintagesynth.com/moog/littlephatty.php"
+      },
+      {
+        "name": "Korg Microkorg XL+ – Analog Modeling Synthesizer with Vocoder",
+        "url": "https://www.korg.com/es/products/synthesizers/microkorg_xl_plus/"
+      },
+      {
+        "name": "Yamaha S90 XS – 88 Key Synthesizer",
+        "url": "https://usa.yamaha.com/products/music_production/synthesizers/s90_xs_s70_xs/index.html"
+      },
+      {
+        "name": "Marcodi K24 – Harpejji Instrument",
+        "url": "https://www.marcodi.com/products/standard-harpejji-k24"
+      },
+      {
+        "name": "Melodica – Free Reed Instrument",
+        "url": null
+      },
+      {
+        "name": "Behringer DeepMind 12",
+        "url": "https://www.behringer.com/product.html?modelCode=P0AC5"
+      },
+      {
+        "name": "Komplete Kontrol S88",
+        "url": "https://www.native-instruments.com/es/products/komplete/keyboards/komplete-kontrol-s88/"
+      }
+    ]
+  },
+  {
+    "section": "Computer",
+    "items": [
+      {
+        "name": "Apple Mac Pro | Intel Xeon W de 12 núcleos a 3,3 GHz, Turbo Boost de hasta 4,4 GHz",
+        "url": "https://www.apple.com/es/mac-pro/"
+      },
+      {
+        "name": "Neve Genesys Control Plugin",
+        "url": "https://www.ams-neve.com/genesyscontrol-plugin-199-w.asp"
+      },
+      {
+        "name": "Pro Tools HDX 2 Card",
+        "url": "https://www.avid.com/products/pro-tools-hdx"
+      },
+      {
+        "name": "Logic Pro",
+        "url": "https://www.apple.com/es/logic-pro/"
+      },
+      {
+        "name": "Melodyne 5",
+        "url": "https://www.celemony.com/es/melodyne/new-in-melodyne-5"
+      },
+      {
+        "name": "Waves Plugins",
+        "url": "https://www.waves.com/plugins"
+      },
+      {
+        "name": "Izotope R8",
+        "url": "https://www.izotope.com/en/products/rx.html"
+      },
+      {
+        "name": "Native Instrument Komplete",
+        "url": "https://www.native-instruments.com/es/catalog/komplete/"
+      },
+      {
+        "name": "Spectrasonic All Instruments",
+        "url": "https://www.spectrasonics.net/"
+      }
+    ]
+  },
+  {
+    "section": "Monitors System",
+    "items": [
+      {
+        "name": "Behringer Monitor System P16",
+        "url": "https://www.behringer.com/product.html?modelCode=P0421"
+      },
+      {
+        "name": "Barefoot Micromain 45 – Audio Monitor Pair",
+        "url": "https://barefootsound.com/micromain45/"
+      },
+      {
+        "name": "Barefoot – Subwoofers",
+        "url": "https://barefootsound.com/microsub45/"
+      },
+      {
+        "name": "Genelec 8341A SAM™ Studio Monitor | L/R & Center",
+        "url": "https://www.genelec.com/8341a"
+      },
+      {
+        "name": "Genelec 8331A SAM™ Studio Monitor | L/R Side & L/R Rear",
+        "url": "https://www.genelec.com/8331a"
+      },
+      {
+        "name": "Genelec 8320A SAM™ Studio Monitor | Roof",
+        "url": "https://www.genelec.com/8320A"
+      },
+      {
+        "name": "Genelec 7370A SAM™ Studio Subwoofer",
+        "url": "https://www.genelec.com/7370A"
+      }
+    ]
+  },
+  {
+    "section": "Equipment - Hardware",
+    "items": [
+      {
+        "name": "Antelope Galaxy 64 Synergy Core",
+        "url": "https://www.avid.com/es/products/pro-tools-hdx"
+      },
+      {
+        "name": "GML8302 – Two-Channel Microphone Preamplifier",
+        "url": "https://www.massenburg.com/products/gml-8304"
+      },
+      {
+        "name": "Manley Variable MU – Mastering Stereo Limiter Compressor HP",
+        "url": "https://www.manley.com/pro/mslchp/"
+      },
+      {
+        "name": "Inward Connections The Brute – Compressor",
+        "url": "https://funkyjunk.es/tienda/analogico/procesadores/compresores/inward-connections-the-brute/"
+      },
+      {
+        "name": "Inward Connections Brute II – Compressor",
+        "url": "https://funkyjunk.es/tienda/analogico/procesadores/compresores/inward-connections-the-brute/"
+      },
+      {
+        "name": "Teletronix LA2A – Compressors",
+        "url": "https://www.uaudio.com/hardware/la-2a.html"
+      },
+      {
+        "name": "Universal Audio 1176 – Compressors",
+        "url": "https://www.uaudio.com/hardware/1176ln.html"
+      },
+      {
+        "name": "SSL Fusion – Analog Processing Tool",
+        "url": "https://www.solidstatelogic.com/fusion"
+      },
+      {
+        "name": "Bricasti M7 – Reverb Processor",
+        "url": "https://www.bricasti.com/en/pro/m7.php"
+      },
+      {
+        "name": "AMS RMX16 Reverb",
+        "url": "https://www.uaudio.com/uad-plugins/reverbs/rmx-16-expanded.html"
+      },
+      {
+        "name": "Eventide Eclipse – Digital Effects Processor",
+        "url": "https://www.eventideaudio.com/products/rackmount/stereo-effects/eclipse-v4"
+      },
+      {
+        "name": "Apollo Twin Duo With Thunderbolt Cable – Universal Audio Interface",
+        "url": "https://www.thomann.de/es/universal_audio_apollo_twin_mkii_duo.htm?sid=40702493f60c8e56807b257e3b481751"
+      },
+      {
+        "name": "Orion 32 HD – Interface",
+        "url": "https://en.antelopeaudio.com/products/orion32-hd/"
+      },
+      {
+        "name": "Focusrite Scarlett 18i20 – 2nd Gen USB Audio Interface",
+        "url": "https://focusrite.com/usb-audio-interface/scarlett/scarlett-18i20"
+      },
+      {
+        "name": "Trident A-Range – Equalizers",
+        "url": "https://www.softube.com/arange#/"
+      },
+      {
+        "name": "Pultec – Equalizers",
+        "url": null
+      },
+      {
+        "name": "Apollo Octo Ultimate 2 – PCI Card Accelerator",
+        "url": "https://www.uaudio.com/uad-accelerators/uad-2-pcie.html"
+      },
+      {
+        "name": "Magma Chassis Thunderbolt – PCI External Lunch Card",
+        "url": "https://www.onestopsystems.com/magma-thunderbolt-expansion?ref=magma.com&page=1"
+      },
+      {
+        "name": "Mercury G810 – Rack Lunchbox",
+        "url": "https://www.mercuryrecordingequipment.com/products/g810/"
+      },
+      {
+        "name": "Mackie SRM 150 – Personal Monitor",
+        "url": "https://mackie.com/products/srm150-compact-powered-pa"
+      },
+      {
+        "name": "QSC KW122 – Active Loudspeaker",
+        "url": "https://www.qsc.com/es/sonido-en-vivo/productos/altavoces/monitores-de-escenario/kw122/"
+      },
+      {
+        "name": "Pro Tools HDX Card",
+        "url": "https://www.avid.com/es/products/pro-tools-hdx"
+      }
+    ]
+  }
+]
