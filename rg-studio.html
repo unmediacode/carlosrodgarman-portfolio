@@ -71,6 +71,18 @@
         </div>
     </header>
 
+    <!-- RG Studio Hero Section (Telón) -->
+    <section class="rg-studio-hero">
+        <h1 class="rg-studio-hero__title">RG STUDIO</h1>
+        <p class="rg-studio-hero__subtitle">Where Dreams Come True</p>
+        <div class="rg-studio-hero__loader">
+            <p class="rg-studio-hero__loader-text">LOADING</p>
+            <div class="rg-studio-hero__loader-bar">
+                <div class="rg-studio-hero__loader-progress"></div>
+            </div>
+        </div>
+    </section>
+
     <main class="main">
         <!-- Hero Section -->
         <section class="section section--hero rg-hero" id="rg-studio">
@@ -807,5 +819,70 @@
     <script src="js/main.js"></script>
     <!-- JS Específico de RG Studio -->
     <script src="js/pages/rg-studio.js"></script>
+
+    <!-- Curtain Animation Script -->
+    <script>
+        // Curtain animation with loading indicator
+        const heroSection = document.querySelector('.rg-studio-hero');
+        const loaderProgress = document.querySelector('.rg-studio-hero__loader-progress');
+
+        // Check if curtain was already shown
+        const curtainShown = sessionStorage.getItem('rg-studio-curtain-shown');
+
+        if (curtainShown) {
+            // Skip curtain animation, show content immediately
+            heroSection.style.display = 'none';
+        } else {
+            // Simulate loading progress
+            let currentProgress = 0;
+            let progressInterval = null;
+
+            function animateProgress() {
+                if (loaderProgress) {
+                    progressInterval = setInterval(() => {
+                        if (currentProgress < 90) {
+                            // Speed up progress as it goes
+                            const increment = currentProgress < 30 ? 2 : currentProgress < 60 ? 3 : 5;
+                            currentProgress += increment;
+                            loaderProgress.style.width = currentProgress + '%';
+                        }
+                    }, 50);
+                }
+            }
+
+            function completeProgress() {
+                if (progressInterval) {
+                    clearInterval(progressInterval);
+                }
+                if (loaderProgress) {
+                    currentProgress = 100;
+                    loaderProgress.style.width = '100%';
+                }
+            }
+
+            // Start progress animation
+            animateProgress();
+
+            // Wait for window load, then complete progress and open curtain
+            window.addEventListener('load', () => {
+                completeProgress();
+                setTimeout(() => {
+                    heroSection.classList.add('curtain-open');
+                    sessionStorage.setItem('rg-studio-curtain-shown', 'true');
+                }, 300);
+            });
+
+            // Fallback: If load event doesn't fire in 3 seconds, open anyway
+            setTimeout(() => {
+                if (!heroSection.classList.contains('curtain-open')) {
+                    completeProgress();
+                    setTimeout(() => {
+                        heroSection.classList.add('curtain-open');
+                        sessionStorage.setItem('rg-studio-curtain-shown', 'true');
+                    }, 300);
+                }
+            }, 3000);
+        }
+    </script>
 </body>
 </html>

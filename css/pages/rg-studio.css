@@ -2,6 +2,82 @@
    ESTILOS ESPECÍFICOS DE RG STUDIO
    =========================================== */
 
+/* ---------- RG Studio Hero Section (Telón) ---------- */
+.rg-studio-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.rg-studio-hero.curtain-open {
+    transform: translateY(-100%);
+}
+
+.rg-studio-hero__title {
+    font-size: 6rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+}
+
+.rg-studio-hero__subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: var(--font-weight-normal);
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+/* ---------- Loading Indicator ---------- */
+.rg-studio-hero__loader {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.rg-studio-hero__loader-text {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.rg-studio-hero__loader-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.rg-studio-hero__loader-progress {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+/* ---------- Main Content ---------- */
+body:has(.rg-studio-hero) .main {
+    margin-top: 0;
+}
+
 /* ---------- Hero Section ---------- */
 .rg-hero {
     background-image: url('../../images RGstudio/rg_studio_web-scaled.jpg');
