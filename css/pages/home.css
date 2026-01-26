@@ -56,28 +56,23 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
+    position: sticky;
+    top: var(--header-height);
     z-index: 1;
 }
 
-/* Sticky state - only activated after animation */
-.featured-project.is-sticky {
-    position: sticky;
-    top: var(--header-height);
-}
-
-/* Split heading animation */
+/* Split heading for scroll-driven animation */
 .heading-hero--split {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .heading-hero__part {
-    opacity: 0;
-    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    will-change: transform;
 }
 
 .heading-hero__part--left {
@@ -86,18 +81,6 @@
 
 .heading-hero__part--right {
     transform: translateX(100vw);
-}
-
-/* Animated state */
-.featured-project.animate-in .heading-hero__part--left {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.featured-project.animate-in .heading-hero__part--right {
-    opacity: 1;
-    transform: translateX(0);
-    transition-delay: 0.2s;
 }
 
 .featured-project::before {
