@@ -139,16 +139,27 @@
                 // Initial load - show all items
                 renderItems(allItems);
 
-                // Open curtain
-                setTimeout(() => {
-                    heroSection.classList.add('curtain-open');
-                }, 300);
+                // Check if curtain was already shown
+                const curtainShown = sessionStorage.getItem('advertising-curtain-shown');
+
+                if (curtainShown) {
+                    // Skip curtain animation, show content immediately
+                    heroSection.style.display = 'none';
+                } else {
+                    // Wait for all page resources to load
+                    window.addEventListener('load', () => {
+                        setTimeout(() => {
+                            heroSection.classList.add('curtain-open');
+                            // Mark curtain as shown for this session
+                            sessionStorage.setItem('advertising-curtain-shown', 'true');
+                        }, 300);
+                    });
+                }
             })
             .catch(error => {
                 console.error('Error loading advertising data:', error);
-                setTimeout(() => {
-                    heroSection.classList.add('curtain-open');
-                }, 500);
+                // Skip curtain on error
+                heroSection.style.display = 'none';
             });
 
         // Filter button handlers

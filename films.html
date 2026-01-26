@@ -144,19 +144,31 @@
                     }
                 }
 
-                // Open curtain immediately
-                setTimeout(() => {
-                    heroSection.classList.add('curtain-open');
-                    // Start loading first batch after curtain starts opening
+                // Check if curtain was already shown
+                const curtainShown = sessionStorage.getItem('films-curtain-shown');
+
+                if (curtainShown) {
+                    // Skip curtain animation, show content immediately
+                    heroSection.style.display = 'none';
                     loadBatch(0);
-                }, 300);
+                } else {
+                    // Wait for all page resources to load
+                    window.addEventListener('load', () => {
+                        setTimeout(() => {
+                            heroSection.classList.add('curtain-open');
+                            // Mark curtain as shown for this session
+                            sessionStorage.setItem('films-curtain-shown', 'true');
+                            // Start loading after curtain opens
+                            setTimeout(() => loadBatch(0), 700);
+                        }, 300);
+                    });
+                }
             })
             .catch(error => {
                 console.error('Error loading film data:', error);
-                // Open curtain even if there's an error
-                setTimeout(() => {
-                    heroSection.classList.add('curtain-open');
-                }, 500);
+                // Skip curtain on error
+                heroSection.style.display = 'none';
+                loadBatch(0);
             });
     </script>
 </body>
