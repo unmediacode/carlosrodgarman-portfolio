@@ -142,48 +142,66 @@
             heroSection.style.display = 'none';
         }
 
-        // Track loading progress
-        let resourcesLoaded = 0;
-        let totalResources = 0;
-        let dataLoaded = false;
+        // Simulate loading progress
+        let currentProgress = 0;
+        let progressInterval = null;
 
-        function updateProgress() {
-            if (totalResources > 0) {
-                const progress = (resourcesLoaded / totalResources) * 100;
-                if (loaderProgress) {
-                    loaderProgress.style.width = progress + '%';
-                }
+        function animateProgress() {
+            if (!curtainShown && loaderProgress) {
+                progressInterval = setInterval(() => {
+                    if (currentProgress < 90) {
+                        // Speed up progress as it goes
+                        const increment = currentProgress < 30 ? 2 : currentProgress < 60 ? 3 : 5;
+                        currentProgress += increment;
+                        loaderProgress.style.width = currentProgress + '%';
+                    }
+                }, 50);
             }
         }
+
+        function completeProgress() {
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+            if (loaderProgress) {
+                currentProgress = 100;
+                loaderProgress.style.width = '100%';
+            }
+        }
+
+        // Start progress animation
+        animateProgress();
 
         // Load advertising items
         fetch('advertising/advertising-data.json')
             .then(response => response.json())
             .then(items => {
                 allItems = items;
-                totalResources = items.length;
-                dataLoaded = true;
 
                 // Update filter button counts
                 updateFilterCounts();
 
                 if (!curtainShown) {
-                    // Wait for window load, then open curtain
+                    // Wait for window load, then complete progress and open curtain
                     window.addEventListener('load', () => {
+                        completeProgress();
                         setTimeout(() => {
                             heroSection.classList.add('curtain-open');
                             sessionStorage.setItem('advertising-curtain-shown', 'true');
                             // Render items after curtain opens
                             setTimeout(() => renderItems(allItems), 700);
-                        }, 500);
+                        }, 300);
                     });
 
                     // Fallback: If load event doesn't fire in 3 seconds, open anyway
                     setTimeout(() => {
                         if (!heroSection.classList.contains('curtain-open')) {
-                            heroSection.classList.add('curtain-open');
-                            sessionStorage.setItem('advertising-curtain-shown', 'true');
-                            setTimeout(() => renderItems(allItems), 700);
+                            completeProgress();
+                            setTimeout(() => {
+                                heroSection.classList.add('curtain-open');
+                                sessionStorage.setItem('advertising-curtain-shown', 'true');
+                                setTimeout(() => renderItems(allItems), 700);
+                            }, 300);
                         }
                     }, 3000);
                 } else {
