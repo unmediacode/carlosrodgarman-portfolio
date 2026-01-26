@@ -8,13 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===========================================
 
     const michaelSection = document.getElementById('michael-buble-section');
+    const gospelSection = document.querySelector('.featured-project--alt');
     const leftPart = document.querySelector('.heading-hero__part--left');
     const rightPart = document.querySelector('.heading-hero__part--right');
 
-    if (michaelSection && leftPart && rightPart) {
+    if (michaelSection && leftPart && rightPart && gospelSection) {
         let sectionTop = 0;
         let isSticky = false;
-        let animationDistance = window.innerHeight * 0.8; // Distance to complete animation (80% of viewport height)
+        let animationDistance = window.innerHeight * 1.2; // Distance to complete animation (120% of viewport height)
+        let animationComplete = false;
 
         // Update section position on resize
         function updateSectionPosition() {
@@ -52,11 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Apply transforms
                 leftPart.style.transform = `translateX(${leftPosition}vw)`;
                 rightPart.style.transform = `translateX(${rightPosition}vw)`;
+
+                // Block Gospel Symphony section until parallax animation completes
+                if (progress < 1) {
+                    // Animation not complete - keep Gospel Symphony below
+                    const pushDown = (1 - progress) * animationDistance;
+                    gospelSection.style.transform = `translateY(${pushDown}px)`;
+                    animationComplete = false;
+                } else {
+                    // Animation complete - allow Gospel Symphony to pass over
+                    gospelSection.style.transform = 'translateY(0)';
+                    animationComplete = true;
+                }
             } else {
                 isSticky = false;
                 // Reset to initial positions
                 leftPart.style.transform = 'translateX(-100vw)';
                 rightPart.style.transform = 'translateX(100vw)';
+                gospelSection.style.transform = 'translateY(0)';
             }
         }
 
