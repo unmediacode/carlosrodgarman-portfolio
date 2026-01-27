@@ -9,11 +9,15 @@
     min-height: 600px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     background-image: url('../../assets/images/about/hero-bg.jpg');
     background-size: cover;
     background-position: center;
-    padding: 0 8rem;
+}
+
+.about-hero .container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .about-hero__overlay {
@@ -272,10 +276,6 @@
 
 /* ---------- Responsive ---------- */
 @media screen and (max-width: 1200px) {
-    .about-hero {
-        padding: 0 4rem;
-    }
-
     .about-hero__title {
         font-size: 6rem;
     }
@@ -301,10 +301,8 @@
 }
 
 @media screen and (max-width: 768px) {
-    .about-hero {
-        padding: 0 2rem;
+    .about-hero .container {
         justify-content: center;
-        text-align: center;
     }
 
     .about-hero__content {
@@ -372,10 +370,6 @@
 }
 
 @media screen and (max-width: 480px) {
-    .about-hero {
-        padding: 0 1.5rem;
-    }
-
     .about-hero__title {
         font-size: 3rem;
     }
