@@ -1,0 +1,467 @@
+/* ===========================================
+   TECHNICAL VIDEOS PAGE STYLES
+   =========================================== */
+
+/* ---------- Technical Hero Section (Telón) ---------- */
+.technical-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.technical-hero.curtain-open {
+    transform: translateY(-100%);
+}
+
+.technical-hero__title {
+    font-size: 6rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+}
+
+.technical-hero__subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: var(--font-weight-normal);
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+/* ---------- Loading Indicator ---------- */
+.technical-hero__loader {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.technical-hero__loader-text {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.technical-hero__loader-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.technical-hero__loader-progress {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+/* ---------- Main Content ---------- */
+body:has(.technical-hero) .main {
+    margin-top: 0;
+}
+
+/* ---------- Technical Intro Section ---------- */
+.technical-intro {
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    padding: 10rem 0 6rem;
+    text-align: center;
+}
+
+.technical-intro__title {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.technical-intro__description {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ---------- Neve Featured Section ---------- */
+.section--neve {
+    background: #b8174c;
+    padding: 6rem 0;
+}
+
+.neve-featured {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.neve-featured__content {
+    color: #fff;
+}
+
+.neve-featured__title {
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+.neve-featured__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.neve-featured__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.neve-featured__list li {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.neve-featured__list li:last-child {
+    border-bottom: none;
+}
+
+.neve-featured__video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.neve-featured__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neve-featured__video:hover .neve-featured__thumbnail {
+    transform: scale(1.05);
+}
+
+.neve-featured__play-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 60%,
+        rgba(0, 0, 0, 0.65) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.neve-featured__video:hover .neve-featured__play-overlay {
+    opacity: 1;
+}
+
+.neve-featured__play-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.neve-featured__video:hover .neve-featured__play-button {
+    transform: scale(1);
+}
+
+.neve-featured__play-button:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.neve-featured__play-icon {
+    width: 0;
+    height: 0;
+    border-left: 20px solid #1a1a1a;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 5px;
+}
+
+/* ---------- Neve Series Section ---------- */
+.neve-series-section {
+    padding: 6rem 0;
+}
+
+.section--dark {
+    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.section__title--light {
+    color: #fff;
+}
+
+/* ---------- Section Styling ---------- */
+.section {
+    padding: 6rem 0;
+}
+
+.section__title {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+.section__subtitle {
+    font-size: 1.125rem;
+    color: #666;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    line-height: 1.6;
+}
+
+/* ---------- Technical Grid ---------- */
+.technical-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2rem;
+    padding: 2rem 0;
+    align-items: stretch;
+}
+
+/* Ensure each card maintains its own stacking context */
+.technical-grid .technical-video-card {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.technical-grid .technical-video-card.reveal {
+    animation: revealCard 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes revealCard {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.technical-grid .technical-video-card:hover {
+    z-index: 10;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1024px) {
+    .technical-hero {
+        padding: 6rem 0 4rem;
+    }
+
+    .technical-hero__title {
+        font-size: 4rem;
+    }
+
+    .technical-hero__subtitle {
+        font-size: 1.25rem;
+    }
+
+    .technical-intro {
+        padding: 8rem 0 5rem;
+    }
+
+    .technical-intro__title {
+        font-size: 3rem;
+    }
+
+    .technical-intro__description {
+        font-size: 1rem;
+    }
+
+    .neve-featured {
+        gap: 3rem;
+    }
+
+    .neve-featured__title {
+        font-size: 2.5rem;
+    }
+
+    .neve-featured__subtitle {
+        font-size: 1.125rem;
+    }
+
+    .neve-featured__list li {
+        font-size: 1rem;
+        padding: 0.625rem 0;
+    }
+
+    .technical-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .technical-hero__title {
+        font-size: 3rem;
+    }
+
+    .technical-hero__subtitle {
+        font-size: 1.125rem;
+    }
+
+    .technical-intro {
+        padding: 7rem 0 4rem;
+    }
+
+    .technical-intro__title {
+        font-size: 2.5rem;
+    }
+
+    .technical-intro__description {
+        font-size: 0.9375rem;
+    }
+
+    .neve-featured {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .neve-featured__title {
+        font-size: 2rem;
+    }
+
+    .neve-featured__subtitle {
+        font-size: 1rem;
+    }
+
+    .neve-featured__list li {
+        font-size: 0.9375rem;
+        padding: 0.5rem 0;
+    }
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    .section__title {
+        font-size: 2rem;
+    }
+
+    .section__subtitle {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .neve-series-section {
+        padding: 4rem 0;
+    }
+
+    .technical-grid {
+        gap: 2rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .technical-hero__title {
+        font-size: 2.5rem;
+    }
+
+    .technical-hero__subtitle {
+        font-size: 1rem;
+    }
+
+    .technical-intro {
+        padding: 6rem 0 3rem;
+    }
+
+    .technical-intro__title {
+        font-size: 2rem;
+    }
+
+    .technical-intro__description {
+        font-size: 0.875rem;
+    }
+
+    .neve-featured__title {
+        font-size: 1.75rem;
+    }
+
+    .neve-featured__subtitle {
+        font-size: 0.9375rem;
+    }
+
+    .neve-featured__list li {
+        font-size: 0.875rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    .section__title {
+        font-size: 1.75rem;
+    }
+
+    .section__subtitle {
+        font-size: 0.9375rem;
+        margin-bottom: 2rem;
+    }
+
+    .neve-series-section {
+        padding: 3rem 0;
+    }
+
+    .technical-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

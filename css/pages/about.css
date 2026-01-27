@@ -1,0 +1,398 @@
+/* ===========================================
+   ABOUT PAGE STYLES
+   =========================================== */
+
+/* ---------- About Hero Section ---------- */
+.about-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: url('../../assets/images/about/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 0 8rem;
+}
+
+.about-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+}
+
+.about-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    text-align: right;
+}
+
+.about-hero__title {
+    font-size: 8rem;
+    font-weight: var(--font-weight-bold);
+    color: #fff;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.about-hero__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.about-hero__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-end;
+}
+
+.about-hero__email,
+.about-hero__phone {
+    font-size: 1.125rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+}
+
+.about-hero__email:hover,
+.about-hero__phone:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateX(-5px);
+}
+
+/* ---------- Awards Section ---------- */
+.awards-section {
+    padding: 6rem 0;
+}
+
+.awards-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+}
+
+.award-item {
+    aspect-ratio: 3/4;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.award-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.award-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.award-highlight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.award-highlight__badge {
+    width: 80px;
+    height: 80px;
+}
+
+.award-highlight__badge-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.award-highlight__info {
+    text-align: left;
+}
+
+.award-highlight__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+}
+
+.award-highlight__subtitle {
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.award-highlight__button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.award-highlight__button:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Biography Section ---------- */
+.biography-section {
+    padding: 8rem 0;
+    background: linear-gradient(180deg, #2a3a3f 0%, #1a2528 100%);
+}
+
+.biography-section__title {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-bold);
+    color: #fff;
+    text-align: center;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+.biography-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.biography-text {
+    position: relative;
+}
+
+.biography-text__paragraph {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.biography-text__paragraph strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.biography-image {
+    width: 400px;
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.biography-image--left {
+    float: left;
+    margin-right: 2rem;
+}
+
+.biography-image--right {
+    float: right;
+    margin-left: 2rem;
+}
+
+.biography-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+}
+
+/* ---------- Photo Gallery Section ---------- */
+.photo-gallery-section {
+    padding: 6rem 0;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+}
+
+.photo-gallery__item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-gallery__item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.photo-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.photo-gallery__item:hover img {
+    filter: grayscale(0%);
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1200px) {
+    .about-hero {
+        padding: 0 4rem;
+    }
+
+    .about-hero__title {
+        font-size: 6rem;
+    }
+
+    .awards-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .award-item:nth-child(4),
+    .award-item:nth-child(5) {
+        grid-column: span 1;
+    }
+
+    .biography-image {
+        width: 350px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-hero {
+        padding: 0 2rem;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .about-hero__content {
+        text-align: center;
+    }
+
+    .about-hero__title {
+        font-size: 4rem;
+    }
+
+    .about-hero__subtitle {
+        font-size: 1rem;
+    }
+
+    .about-hero__contact {
+        align-items: center;
+    }
+
+    .awards-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .award-highlight {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .award-highlight__info {
+        text-align: center;
+    }
+
+    .biography-section {
+        padding: 6rem 0;
+    }
+
+    .biography-section__title {
+        font-size: 2.5rem;
+    }
+
+    .biography-text__paragraph {
+        font-size: 1rem;
+    }
+
+    .biography-image {
+        float: none;
+        width: 100%;
+        margin: 2rem 0;
+    }
+
+    .biography-image--left,
+    .biography-image--right {
+        float: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-hero {
+        padding: 0 1.5rem;
+    }
+
+    .about-hero__title {
+        font-size: 3rem;
+    }
+
+    .about-hero__subtitle {
+        font-size: 0.9375rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-hero__email,
+    .about-hero__phone {
+        font-size: 1rem;
+    }
+
+    .awards-gallery {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .biography-section__title {
+        font-size: 2rem;
+    }
+
+    .biography-text__paragraph {
+        font-size: 0.9375rem;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Videos - Carlos Rodgarman</title>
+    <meta name="description" content="Technical insights and tutorials from RG Studios featuring the Neve Genesys Black console and world-class audio equipment.">
+
+    <!-- Preconnect para fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+    <!-- CSS del Technical Video Card -->
+    <link rel="stylesheet" href="technical-videos/technical-video-card.css">
+
+    <!-- CSS específico de Technical Videos -->
+    <link rel="stylesheet" href="css/pages/technical-videos.css">
+
+    <!-- CSS Responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="logo" aria-label="Volver al inicio">
+                <img src="assets/logos/logo.svg" alt="Rodgarman">
+            </a>
+
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">HOME</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="rg-studio.html" class="nav__link">RG<br>STUDIO</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="music.html" class="nav__link">MUSIC</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="films.html" class="nav__link">FILMS<br>TV</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="advertising.html" class="nav__link">ADVERTISING</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="technical-videos.html" class="nav__link nav__link--active">TECHNICAL<br>videos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#blog" class="nav__link">BLOG</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="about.html" class="nav__link">ABOUT</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Technical Videos Hero Section (Telón) -->
+    <section class="technical-hero">
+        <h1 class="technical-hero__title">TECHNICAL VIDEOS</h1>
+        <p class="technical-hero__subtitle">Neve Genesys Black · Studio Gear · Production Insights</p>
+        <div class="technical-hero__loader">
+            <p class="technical-hero__loader-text">LOADING</p>
+            <div class="technical-hero__loader-bar">
+                <div class="technical-hero__loader-progress"></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main">
+        <!-- Technical Videos Intro Section -->
+        <section class="technical-intro">
+            <div class="container">
+                <h1 class="technical-intro__title">Technical Insights with Carlos Rodgarman</h1>
+                <p class="technical-intro__description">
+                    Delve into the world of professional audio with Carlos Rodgarman. Our video series offers an in-depth exploration of industry-leading audio equipment, including the Neve Genesys Black mixing console and esteemed microphones like the Telefunken U47. Whether you're an audio professional seeking expert insights or an enthusiast curious about the gear behind the sound, our technical video series with Carlos Rodgarman will walk you through every detail.
+                </p>
+            </div>
+        </section>
+
+        <!-- Neve Genesys Black Featured Section -->
+        <section class="section section--neve">
+            <div class="container container--wide">
+                <div class="neve-featured">
+                    <div class="neve-featured__content">
+                        <h2 class="neve-featured__title">Neve Genesys Black</h2>
+                        <p class="neve-featured__subtitle">Complete Series Overview</p>
+                        <ul class="neve-featured__list">
+                            <li>U1: EQ / DYN / INS1 / INS2</li>
+                            <li>U2: FILING</li>
+                            <li>U3: ORDER</li>
+                            <li>U4: RTE SEL</li>
+                            <li>U5: DAW CONTROL</li>
+                            <li>U6: BONUS TRACK</li>
+                        </ul>
+                    </div>
+                    <div class="neve-featured__video">
+                        <div class="neve-featured__video-wrapper">
+                            <img src="technical-videos/images/miniaturas/neve-resumen.jpg" alt="Neve Genesys Black Resumen" class="neve-featured__thumbnail">
+                            <div class="neve-featured__play-overlay">
+                                <button class="neve-featured__play-button" aria-label="Play video">
+                                    <div class="neve-featured__play-icon"></div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Neve Series Grid -->
+        <section class="section section--dark neve-series-section">
+            <div class="container container--wide">
+                <h2 class="section__title section__title--light">Neve Genesys Black</h2>
+                <div id="neveSeriesGrid" class="technical-grid">
+                    <!-- Las tarjetas se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Videos Section -->
+        <section class="section section--light">
+            <div class="container container--wide">
+                <h2 class="section__title">Featured Videos</h2>
+                <p class="section__subtitle">Watch dedicated screencasts from our YouTube channel presenting all the new RG STUDIO features in detail and never miss a thing!</p>
+                <div id="featuredVideosGrid" class="technical-grid">
+                    <!-- Las tarjetas se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">© 2026 Carlos Rodgarman. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="technical-videos/technical-video-card.js"></script>
+    <script>
+        // Initialize Technical Video cards
+        const heroSection = document.querySelector('.technical-hero');
+        const loaderProgress = document.querySelector('.technical-hero__loader-progress');
+        const neveSeriesGrid = document.getElementById('neveSeriesGrid');
+        const featuredVideosGrid = document.getElementById('featuredVideosGrid');
+        const neveFeaturedVideo = document.querySelector('.neve-featured__video');
+
+        let allVideos = [];
+        let cardInstances = [];
+        let featuredModal = null;
+
+        // Check if curtain was already shown
+        const curtainShown = sessionStorage.getItem('technical-curtain-shown');
+
+        if (curtainShown) {
+            // Skip curtain animation, show content immediately
+            heroSection.style.display = 'none';
+        }
+
+        // Simulate loading progress
+        let currentProgress = 0;
+        let progressInterval = null;
+
+        function animateProgress() {
+            if (!curtainShown && loaderProgress) {
+                progressInterval = setInterval(() => {
+                    if (currentProgress < 90) {
+                        const increment = currentProgress < 30 ? 2 : currentProgress < 60 ? 3 : 5;
+                        currentProgress += increment;
+                        loaderProgress.style.width = currentProgress + '%';
+                    }
+                }, 50);
+            }
+        }
+
+        function completeProgress() {
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+            if (loaderProgress) {
+                currentProgress = 100;
+                loaderProgress.style.width = '100%';
+            }
+        }
+
+        // Start progress animation
+        animateProgress();
+
+        // Load technical videos data
+        fetch('technical-videos/technical-videos-data.json')
+            .then(response => response.json())
+            .then(videos => {
+                allVideos = videos;
+
+                // Separate Neve Series and Featured Videos
+                const neveVideos = videos.filter(v => v.category === 'NEVE SERIES');
+                const featuredVideos = videos.filter(v => v.category !== 'NEVE SERIES');
+
+                // Setup featured video modal with specific resumen video
+                const resumenVideo = {
+                    id: 'neve-resumen',
+                    title: 'NEVE GENESYS BLACK | DAW RESUMEN',
+                    category: 'NEVE SERIES',
+                    series: 'Neve Genesys Black',
+                    description: 'Serie completa de seis partes que documenta la integración entre hardware analógico y control digital de la consola Neve Genesys Black.',
+                    coverImage: 'technical-videos/images/miniaturas/neve-resumen.jpg',
+                    videoUrl: 'https://www.youtube.com/watch?v=OWWuXbcvs-Q',
+                    year: '2020',
+                    tags: ['Neve Genesys Black', 'Complete Series', 'DAW Integration', 'Analog Console', 'Hybrid Workflow']
+                };
+
+                if (neveFeaturedVideo) {
+                    neveFeaturedVideo.addEventListener('click', () => {
+                        openFeaturedModal(resumenVideo);
+                    });
+                }
+
+                if (!curtainShown) {
+                    // Wait for window load, then complete progress and open curtain
+                    window.addEventListener('load', () => {
+                        completeProgress();
+                        setTimeout(() => {
+                            heroSection.classList.add('curtain-open');
+                            sessionStorage.setItem('technical-curtain-shown', 'true');
+                            // Render items after curtain opens
+                            setTimeout(() => {
+                                renderVideos(neveVideos, neveSeriesGrid);
+                                renderVideos(featuredVideos, featuredVideosGrid);
+                            }, 700);
+                        }, 300);
+                    });
+
+                    // Fallback: If load event doesn't fire in 3 seconds, open anyway
+                    setTimeout(() => {
+                        if (!heroSection.classList.contains('curtain-open')) {
+                            completeProgress();
+                            setTimeout(() => {
+                                heroSection.classList.add('curtain-open');
+                                sessionStorage.setItem('technical-curtain-shown', 'true');
+                                setTimeout(() => {
+                                    renderVideos(neveVideos, neveSeriesGrid);
+                                    renderVideos(featuredVideos, featuredVideosGrid);
+                                }, 700);
+                            }, 300);
+                        }
+                    }, 3000);
+                } else {
+                    // Skip curtain, render immediately
+                    renderVideos(neveVideos, neveSeriesGrid);
+                    renderVideos(featuredVideos, featuredVideosGrid);
+                }
+            })
+            .catch(error => {
+                console.error('Error loading technical videos data:', error);
+                heroSection.style.display = 'none';
+            });
+
+        // Open featured video modal
+        function openFeaturedModal(video) {
+            const tempCard = new TechnicalVideoCard(document.createElement('div'), video);
+            tempCard.openModal();
+        }
+
+        // Render videos
+        function renderVideos(videos, container) {
+            videos.forEach((video, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'technical-video-card';
+                cardElement.dataset.videoId = video.id;
+                cardElement.dataset.category = video.category;
+                container.appendChild(cardElement);
+
+                // Create card instance
+                const cardInstance = new TechnicalVideoCard(cardElement, video);
+                cardInstances.push(cardInstance);
+
+                // Reveal animation with stagger
+                setTimeout(() => {
+                    cardElement.classList.add('reveal');
+                }, 50 * index);
+            });
+        }
+    </script>
+</body>
+</html>

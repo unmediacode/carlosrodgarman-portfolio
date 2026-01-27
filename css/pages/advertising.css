@@ -99,32 +99,54 @@ body:has(.advertising-hero) .main {
 .advertising-filter-btn {
     position: relative;
     padding: 0.875rem 2rem;
-    background: transparent;
-    border: 2px solid #ddd;
-    color: #666;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #333;
     font-size: 0.875rem;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 16px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: var(--font-primary);
     white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.advertising-filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.advertising-filter-btn:hover::before {
+    left: 100%;
 }
 
 .advertising-filter-btn:hover {
-    border-color: #1a1a1a;
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.4);
     color: #1a1a1a;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .advertising-filter-btn.active {
-    background: #1a1a1a;
-    border-color: #1a1a1a;
+    background: rgba(26, 26, 26, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-color: rgba(255, 255, 255, 0.2);
     color: #fff;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .advertising-filter-btn::after {
@@ -132,12 +154,15 @@ body:has(.advertising-hero) .main {
     display: inline-block;
     margin-left: 0.5rem;
     padding: 0.125rem 0.5rem;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
     font-size: 0.75rem;
     font-weight: 700;
     opacity: 0;
     transition: opacity 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .advertising-filter-btn.active::after,
@@ -206,6 +231,7 @@ body:has(.advertising-hero) .main {
     .advertising-filter-btn {
         padding: 0.75rem 1.5rem;
         font-size: 0.8125rem;
+        border-radius: 14px;
     }
 
     .advertising-grid {

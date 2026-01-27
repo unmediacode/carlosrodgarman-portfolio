@@ -1,0 +1,98 @@
+[
+  {
+    "id": "neve-u1",
+    "title": "EQ / DYN / INS1 / INS2",
+    "category": "NEVE SERIES",
+    "series": "Neve Genesys Black",
+    "description": "Análisis profundo de la sección de canal: Ecualizadores 1084/88R, compresores VCA, puertas de ruido y gestión de insertos analógicos.",
+    "coverImage": "technical-videos/images/miniaturas/neve-u1.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=6ZFmFg2THsk",
+    "year": "2020",
+    "tags": ["Neve Genesys Black", "Analog EQ", "1084EQ", "Audio Engineering", "Studio Workflow", "VCA Compressor"]
+  },
+  {
+    "id": "neve-u2",
+    "title": "U2 FILING",
+    "category": "NEVE SERIES",
+    "series": "Neve Genesys Black",
+    "description": "Cómo guardar y cargar Snapshots para recuperar instantáneamente mezclas analógicas, niveles y ruteos complejos con un solo clic.",
+    "coverImage": "technical-videos/images/miniaturas/neve-u2.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=nItslGG6JQI",
+    "year": "2020",
+    "tags": ["Total Recall", "Studio Efficiency", "Mixing Console", "Neve Recall", "Workflow Optimization"]
+  },
+  {
+    "id": "neve-u3",
+    "title": "U3 ORDER",
+    "category": "NEVE SERIES",
+    "series": "Neve Genesys Black",
+    "description": "Control manual del orden de procesamiento de canal. Configuración de la cadena analógica interna (EQ/DYN/INS) para esculpir el tono perfecto.",
+    "coverImage": "technical-videos/images/miniaturas/neve-u3.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=ktYHfHe24TM",
+    "year": "2020",
+    "tags": ["Signal Flow", "Audio Routing", "Mixing Tips", "Analog Chain", "Neve Console"]
+  },
+  {
+    "id": "neve-u4",
+    "title": "U4 RTE SEL",
+    "category": "NEVE SERIES",
+    "series": "Neve Genesys Black",
+    "description": "Representación gráfica y control del enrutamiento de señal en la consola. Gestión visual de buses y envíos.",
+    "coverImage": "technical-videos/images/miniaturas/neve-u4.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=p2zt_4E6YgU",
+    "year": "2020",
+    "tags": ["Audio Routing", "Console Architecture", "Studio Setup", "Signal Path"]
+  },
+  {
+    "id": "neve-u5",
+    "title": "U5 DAW CONTROL",
+    "category": "NEVE SERIES",
+    "series": "Neve Genesys Black",
+    "description": "Transformación de la superficie analógica en un controlador HUI para Pro Tools y Logic Pro. Automatización de faders motorizados.",
+    "coverImage": "technical-videos/images/miniaturas/neve-u5.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=kzaSDx7FR5s",
+    "year": "2020",
+    "tags": ["Pro Tools", "Logic Pro", "DAW Controller", "Hybrid Mixing", "HUI", "Automation"]
+  },
+  {
+    "id": "neve-u6",
+    "title": "U6 BONUS TRACK",
+    "category": "NEVE SERIES",
+    "series": "Neve Genesys Black",
+    "description": "Exploración de las posibilidades de control remoto del hardware analógico directamente desde el software de grabación.",
+    "coverImage": "technical-videos/images/miniaturas/neve-u6.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=qJNOkxXjzvc",
+    "year": "2020",
+    "tags": ["Neve Plugin", "Analog Automation", "Future Of Mixing", "VST", "AAX"]
+  },
+  {
+    "id": "u47-unboxing",
+    "title": "Telefunken & Neumann U47",
+    "category": "GEAR UNBOXING",
+    "description": "Un vistazo exclusivo a dos de los micrófonos más reverenciados de la historia. Incluye detalles sobre las cápsulas M7/K47 y tubos VF14M originales.",
+    "coverImage": "technical-videos/images/miniaturas/u47-unboxing.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=xzi9cS7Kvbo",
+    "year": "2020",
+    "tags": ["Telefunken U47", "Neumann U47", "Vintage Microphone", "Tube Mic", "Studio Gear", "VF14M"]
+  },
+  {
+    "id": "mic-comparison",
+    "title": "Audio Test | Telefunken U47 | Neumann U47 | Neumann M149",
+    "category": "GEAR REVIEW",
+    "description": "Comparamos estos increíbles micrófonos con la ayuda de Pereli Amirkhanian.",
+    "coverImage": "technical-videos/images/miniaturas/mic-comparison.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=HXuvj4PC8xI",
+    "year": "2020",
+    "tags": ["Microphone Comparison", "U47", "M149", "Audio Test", "Vocal Recording"]
+  },
+  {
+    "id": "mac-pro",
+    "title": "Neve Genesys Black",
+    "category": "GEAR UNBOXING",
+    "description": "Features of the Channel Section of the new Neve Genesys Black.",
+    "coverImage": "technical-videos/images/miniaturas/mac-pro.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=sOBWNHRXo7I",
+    "year": "2020",
+    "tags": ["Mac Pro", "OWC", "Studio Computer", "Music Production PC", "Tech Upgrade"]
+  }
+]
