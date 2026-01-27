@@ -181,9 +181,9 @@
 
 .biography-content {
     display: grid;
-    grid-template-columns: 300px 1fr 300px;
-    gap: 3rem;
-    max-width: 1400px;
+    grid-template-columns: 250px 1fr 250px;
+    gap: 4rem;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 2rem;
 }
