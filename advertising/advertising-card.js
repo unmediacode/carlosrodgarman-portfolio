@@ -35,9 +35,9 @@ class AdvertisingCard {
                     class="advertising-card__image"
                     loading="lazy"
                 >
-                ${this.data.category ? `
+                ${this.data.year ? `
                     <div class="advertising-card__badge advertising-card__badge--${badgeClass}">
-                        ${this.data.category}
+                        ${this.data.year}
                     </div>
                 ` : ''}
                 ${hasVideo ? `
@@ -51,11 +51,8 @@ class AdvertisingCard {
             <div class="advertising-card__info">
                 <h3 class="advertising-card__title">${this.data.title}</h3>
                 <div class="advertising-card__meta">
-                    ${this.data.client ? `
-                        <span class="advertising-card__client">${this.data.client}</span>
-                    ` : ''}
-                    ${this.data.year ? `
-                        <span class="advertising-card__year">${this.data.year}</span>
+                    ${this.data.category ? `
+                        <span class="advertising-card__category">${this.data.category}</span>
                     ` : ''}
                 </div>
             </div>

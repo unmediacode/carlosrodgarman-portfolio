@@ -107,7 +107,7 @@ body:has(.advertising-hero) .main {
     letter-spacing: 0.05em;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 12px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: var(--font-primary);
     white-space: nowrap;
@@ -150,7 +150,7 @@ body:has(.advertising-hero) .main {
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem 2rem;
     padding: 2rem 0;
-    align-items: start;
+    align-items: stretch;
     transition: opacity 0.3s ease;
 }
 

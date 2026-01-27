@@ -3,102 +3,24 @@
    =========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // ===========================================
-    // MICHAEL BUBLÉ SECTION - SCROLL-DRIVEN ANIMATION
-    // ===========================================
+    // Efecto fade-in suave para las secciones
+    const sections = document.querySelectorAll('.featured-project, .section--surface');
 
-    const michaelSection = document.getElementById('michael-buble-section');
-    const gospelSection = document.querySelector('.featured-project--alt');
-    const leftPart = document.querySelector('.heading-hero__part--left');
-    const rightPart = document.querySelector('.heading-hero__part--right');
+    const observerOptions = {
+        threshold: 0.15, // La sección debe estar al menos 15% visible
+        rootMargin: '0px'
+    };
 
-    if (michaelSection && leftPart && rightPart && gospelSection) {
-        let sectionTop = 0;
-        let isSticky = false;
-        let animationDistance = window.innerHeight * 2; // Distance to complete animation (2x viewport height)
-        let animationComplete = false;
-        let gospelOriginalTop = 0;
-
-        // Update section position on resize
-        function updateSectionPosition() {
-            const rect = michaelSection.getBoundingClientRect();
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            sectionTop = rect.top + scrollTop - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height') || 70);
-        }
-
-        // Handle scroll-driven animation
-        function handleScroll() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height') || 70);
-
-            // Check if section is sticky (reached its sticky position)
-            if (scrollTop >= sectionTop && scrollTop < sectionTop + animationDistance) {
-                // We're in the parallax animation zone
-                isSticky = true;
-
-                // Calculate scroll progress after section becomes sticky
-                const scrollProgress = scrollTop - sectionTop;
-
-                // Calculate animation progress (0 to 1)
-                let progress = Math.min(scrollProgress / animationDistance, 1);
-
-                // Easing function for smoother animation
-                progress = easeOutCubic(progress);
-
-                // Calculate position for left part (from -100vw to 0)
-                const leftPosition = -100 + (progress * 100);
-
-                // Calculate position for right part (from +100vw to 0)
-                const rightPosition = 100 - (progress * 100);
-
-                // Apply transforms
-                leftPart.style.transform = `translateX(${leftPosition}vw)`;
-                rightPart.style.transform = `translateX(${rightPosition}vw)`;
-
-                // Block Gospel Symphony during animation
-                const pushDown = (1 - progress) * animationDistance;
-                gospelSection.style.transform = `translateY(${pushDown}px)`;
-
-            } else if (scrollTop >= sectionTop + animationDistance) {
-                // Past the animation zone - Gospel Symphony can pass over normally
-                leftPart.style.transform = 'translateX(0)';
-                rightPart.style.transform = 'translateX(0)';
-                gospelSection.style.transform = 'translateY(0)';
-
-            } else {
-                // Before the section becomes sticky
-                isSticky = false;
-                leftPart.style.transform = 'translateX(-100vw)';
-                rightPart.style.transform = 'translateX(100vw)';
-                gospelSection.style.transform = 'translateY(0)';
-            }
-        }
-
-        // Easing function for smooth animation
-        function easeOutCubic(t) {
-            return 1 - Math.pow(1 - t, 3);
-        }
-
-        // Initialize
-        updateSectionPosition();
-        handleScroll();
-
-        // Listen to scroll events
-        let ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Solo animar una vez
             }
         });
+    }, observerOptions);
 
-        // Update on resize
-        window.addEventListener('resize', function() {
-            updateSectionPosition();
-            handleScroll();
-        });
-    }
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 });

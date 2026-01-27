@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Rodgarman - Musical Producer, Arranger and Engineer</title>
-    <meta name="description" content="Carlos Rodgarman is a Musical Producer, Arranger and Engineer. Discover his latest work with top artists like Michael Bublé and more.">
+    <title>Gospel Symphony - Rebecca Rods - Carlos Rodgarman</title>
+    <meta name="description" content="Gospel Symphony, the fourth album by Black Light Gospel Choir, mixed at RG Music by Carlos Rodgarman in Dolby Atmos.">
 
     <!-- Preconnect para fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS Global (mismo orden siempre) -->
+    <!-- CSS Global -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/layout.css">
 
     <!-- CSS Específico de esta página -->
-    <link rel="stylesheet" href="css/pages/home.css">
+    <link rel="stylesheet" href="css/pages/gospel-symphony.css">
 
     <!-- CSS Responsive -->
     <link rel="stylesheet" href="css/responsive.css">
@@ -27,6 +27,22 @@
     <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
 </head>
 <body>
+    <!-- Curtain Hero -->
+    <div class="gospel-curtain" id="gospelCurtain">
+        <div class="gospel-curtain__content">
+            <h1 class="gospel-curtain__title">REBECCA RODS</h1>
+            <h2 class="gospel-curtain__subtitle">GOSPEL SYMPHONY</h2>
+
+            <!-- Loading Indicator -->
+            <div class="gospel-curtain__loader">
+                <p class="gospel-curtain__loader-text">Loading</p>
+                <div class="gospel-curtain__loader-bar">
+                    <div class="gospel-curtain__loader-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="header__container">
@@ -43,7 +59,7 @@
             <nav class="nav">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="#home" class="nav__link nav__link--active">HOME</a>
+                        <a href="index.html" class="nav__link">HOME</a>
                     </li>
                     <li class="nav__item">
                         <a href="rg-studio.html" class="nav__link">RG<br>STUDIO</a>
@@ -73,105 +89,130 @@
 
     <main class="main">
         <!-- Hero Section -->
-        <section class="section section--hero hero" id="home">
+        <section class="section gs-hero" style="background-image: url('assets/images/backgrounds/gospel-symphony-bg.jpg');">
             <div class="container">
-                <div class="hero__content">
-                    <h1 class="heading-display">Discover his<br>latest work</h1>
-                    <p class="hero__description">Carlos Rodgarman is a Musical<br>Producer, Arranger and<br>Engineer.</p>
-                    <a href="#social" class="hero__social" aria-label="Social media">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                            <circle cx="10" cy="10" r="8"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Rotated text -->
-            <div class="rotated-text">
-                Rogarbandmusic.ink is a corporation registered in the State of California.
-            </div>
-        </section>
-
-        <!-- Michael Bublé Section -->
-        <section class="section section--featured featured-project" style="background-image: url('assets/images/backgrounds/michael-buble-bg.jpg');">
-            <div class="container">
-                <div class="featured-project__content">
+                <div class="gs-hero__content">
                     <div class="section-title">
                         <div class="section-title__line"></div>
-                        <h3 class="section-title__text">The Essential</h3>
+                        <h3 class="section-title__text">Rebecca Rods</h3>
                         <div class="section-title__line"></div>
                     </div>
 
-                    <h2 class="heading-hero">MICHAEL BUBLÉ</h2>
-
-                    <div class="separator"></div>
+                    <h1 class="heading-hero">GOSPEL SYMPHONY</h1>
 
                     <div class="vector-logo">
                         <img src="assets/vectors/dolby-atmos.svg" alt="Dolby Atmos">
                     </div>
-
-                    <a href="michael-buble.html" class="btn btn--link">more info</a>
                 </div>
             </div>
         </section>
 
-        <!-- Gospel Symphony Section -->
-        <section class="section section--featured featured-project featured-project--alt" style="background-image: url('assets/images/backgrounds/gospel-symphony-bg.jpg');">
+        <!-- Project Description -->
+        <section class="section section--dark gs-description">
             <div class="container">
-                <div class="featured-project__content">
-                    <div class="section-title">
-                        <div class="section-title__line"></div>
-                        <h3 class="section-title__text">Rebeca Rods</h3>
-                        <div class="section-title__line"></div>
-                    </div>
+                <h2 class="gs-description__title">Gospel Symphony, the fourth album by «Black Light Gospel Choir».</h2>
 
-                    <h2 class="heading-hero">GOSPEL SYMPHONY</h2>
-
-                    <div class="separator"></div>
-
-                    <a href="gospel-symphony.html" class="btn btn--link">MORE INFO</a>
+                <div class="gs-description__text">
+                    <p><strong>Gospel Symphony</strong> is the fourth album by the <strong>Black Light Gospel Choir</strong>. Gospel Symphony, fuses gospel and symphonic music. It was recorded at Eastwest Studios in Los Angeles and mixed at RG Music. A hundred people from different continents have collaborated in the work, all coordinated by Rebeca Rods and Carlos Rodgarman. Some of the tracks were mixed in Dolby Atmos and for his second volume, which he hopes to release next year, all the work will be in 7.1.4.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Clients Section -->
-        <section class="section section--surface" id="clients">
+        <!-- Album & Tracklist -->
+        <section class="section section--dark gs-album">
             <div class="container">
-                <div class="section-title">
-                    <div class="section-title__line"></div>
-                    <h2 class="clients__heading">Clients</h2>
-                    <div class="section-title__line"></div>
+                <div class="gs-album__layout">
+                    <!-- Album Cover -->
+                    <div class="gs-album__cover">
+                        <div class="gs-album__cover-wrapper">
+                            <img src="assets/images/portadas/Portada-GS-v2-1.jpg" alt="Gospel Symphony" class="gs-album__cover-image">
+                        </div>
+                    </div>
+
+                    <!-- Tracklist -->
+                    <div class="gs-album__tracklist">
+                        <div class="gs-album__credits">
+                            <p>MIXED AT RG MUSIC BY <strong>CARLOS RODGARMAN</strong> AND PRODUCED BY <strong>REBECA RODS & CARLOS RODGARMAN</strong></p>
+                        </div>
+
+                        <ol class="gs-tracklist">
+                            <li class="gs-tracklist__item">THOU, OH LORD</li>
+                            <li class="gs-tracklist__item">HALLELUJAH ANYHOW</li>
+                            <li class="gs-tracklist__item">I FOUND THE ANSWER FT. BAZIL MEADE</li>
+                            <li class="gs-tracklist__item">I NEED YOU FT. ESPERANZA MARTIN</li>
+                            <li class="gs-tracklist__item">I NEVER LOST MY PRAISE FT. AROA FERNANDEZ</li>
+                            <li class="gs-tracklist__item">ENSEMBLE: REBECCA RODS</li>
+                        </ol>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <p class="clients__intro">
-                    Here are some of the clients I've worked with over the years in my professional career, mostly in the USA.<br>Get in touch with me if you've something spinning in your mind, I can help you!
-                </p>
+        <!-- Streaming Platforms -->
+        <section class="section section--dark gs-platforms">
+            <div class="container">
+                <h3 class="gs-platforms__title">Available now</h3>
 
-                <div class="logo-grid">
-                    <div class="logo-grid__item">
-                        <img src="assets/logos/clients/logo_sony.svg" alt="Sony Music" loading="lazy">
+                <div class="gs-platforms__links">
+                    <a href="https://open.spotify.com" target="_blank" class="gs-platform-link" aria-label="Listen on Spotify">
+                        <img src="assets/logos/plataforms/logo-spotify-1.svg" alt="Spotify">
+                    </a>
+                    <a href="https://music.amazon.com" target="_blank" class="gs-platform-link" aria-label="Listen on Amazon Music">
+                        <img src="assets/logos/plataforms/logo-amazon-1.svg" alt="Amazon Music">
+                    </a>
+                    <a href="https://music.apple.com" target="_blank" class="gs-platform-link" aria-label="Listen on Apple Music">
+                        <img src="assets/logos/plataforms/logo-itunes-1.svg" alt="Apple Music">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio Gallery -->
+        <section class="section gs-gallery">
+            <div class="container">
+                <div class="gs-gallery__grid">
+                    <div class="gs-gallery__item">
+                        <img src="assets/images/studio/gospel-symphony-1.jpg" alt="Recording session">
                     </div>
-                    <div class="logo-grid__item">
-                        <img src="assets/logos/clients/logo_time_life.svg" alt="Time Life" loading="lazy">
+                    <div class="gs-gallery__item">
+                        <img src="assets/images/studio/gospel-symphony-2.jpg" alt="Rebeca Rods in studio">
                     </div>
-                    <div class="logo-grid__item">
-                        <img src="assets/logos/clients/logo_warner_music.svg" alt="Warner Music" loading="lazy">
+                    <div class="gs-gallery__item">
+                        <img src="assets/images/studio/gospel-symphony-3.jpg" alt="Piano recording">
                     </div>
-                    <div class="logo-grid__item">
-                        <img src="assets/logos/clients/logo_dream.svg" alt="Dream Records" loading="lazy">
+                    <div class="gs-gallery__item">
+                        <img src="assets/images/studio/gospel-symphony-4.jpg" alt="Gospel choir recording">
                     </div>
-                    <div class="logo-grid__item">
-                        <img src="assets/logos/clients/logo_universal.svg" alt="Universal Music" loading="lazy">
+                    <div class="gs-gallery__item">
+                        <img src="assets/images/studio/gospel-symphony-5.jpg" alt="Mixing session">
                     </div>
-                    <div class="logo-grid__item">
-                        <img src="assets/logos/clients/logo_rtve.svg" alt="RTVE" loading="lazy">
+                    <div class="gs-gallery__item">
+                        <img src="assets/images/studio/gospel-symphony-6.jpg" alt="Carlos at the keyboard">
                     </div>
-                    <div class="logo-grid__item">
-                        <img src="assets/logos/clients/logo_paramount.svg" alt="Paramount" loading="lazy">
-                    </div>
-                    <div class="logo-grid__item">
-                        <img src="assets/logos/clients/logo_waner.svg" alt="Warner Bros" loading="lazy">
-                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Press Section -->
+        <section class="section section--dark gs-press">
+            <div class="container">
+                <h2 class="gs-press__title">Press</h2>
+
+                <div class="gs-press__articles">
+                    <article class="gs-press__article">
+                        <h3 class="gs-press__article-title">La vigüesa que estuvo tres veces en Eurovisión.</h3>
+                        <a href="#" class="gs-press__article-link">Read more</a>
+                    </article>
+
+                    <article class="gs-press__article">
+                        <h3 class="gs-press__article-title">"Gospel Symphony" afina la voz.</h3>
+                        <a href="#" class="gs-press__article-link">Read more</a>
+                    </article>
+
+                    <article class="gs-press__article">
+                        <h3 class="gs-press__article-title">El Gospel, con DNI vigüés, dará el do de pecho con Rebeca Rods.</h3>
+                        <a href="#" class="gs-press__article-link">Read more</a>
+                    </article>
                 </div>
             </div>
         </section>
@@ -235,7 +276,7 @@
 
     <!-- JS Global -->
     <script src="js/main.js"></script>
-    <!-- JS Específico de Home -->
-    <script src="js/pages/home.js"></script>
+    <!-- JS Específico de Gospel Symphony -->
+    <script src="js/pages/gospel-symphony.js"></script>
 </body>
 </html>

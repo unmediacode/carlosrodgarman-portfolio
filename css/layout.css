@@ -141,7 +141,6 @@
     color: var(--color-text-inverted);
     padding-top: var(--spacing-2xl);
     position: relative;
-    z-index: 4;
 }
 
 .footer__main {

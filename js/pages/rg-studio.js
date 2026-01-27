@@ -5,6 +5,29 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // ===========================================
+    // FADE-IN SUAVE PARA SECCIONES
+    // ===========================================
+    const sections = document.querySelectorAll('.about-studio-section, .services-section, .dolby-section, .legendary-mics-section, .equipment-section, .section--dark');
+
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px'
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // ===========================================
     // STUDIO GALLERY LIGHTBOX
     // ===========================================
 

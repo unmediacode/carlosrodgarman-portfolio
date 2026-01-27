@@ -1,0 +1,379 @@
+/* ===========================================
+   ESTILOS ESPECÍFICOS DE GOSPEL SYMPHONY PAGE
+   =========================================== */
+
+/* ---------- Curtain Animation ---------- */
+.gospel-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.gospel-curtain.curtain-open {
+    transform: translateY(-100%);
+}
+
+.gospel-curtain__title {
+    font-size: 2rem;
+    font-weight: var(--font-weight-normal);
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.gospel-curtain__subtitle {
+    font-size: 4rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+/* Loading Indicator */
+.gospel-curtain__loader {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.gospel-curtain__loader-text {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.gospel-curtain__loader-bar {
+    width: 200px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.gospel-curtain__loader-progress {
+    height: 100%;
+    background-color: var(--color-text-inverted);
+    width: 0;
+    animation: loadingProgress 1.2s ease-in-out forwards;
+}
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* ---------- Hero Section ---------- */
+.gs-hero {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.gs-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
+.gs-hero__content {
+    position: relative;
+    z-index: 1;
+}
+
+.gs-hero .section-title__text,
+.gs-hero .heading-hero {
+    color: var(--color-text-inverted);
+}
+
+.gs-hero .section-title__line {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ---------- Description Section ---------- */
+.gs-description {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-primary);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.gs-description.visible {
+    opacity: 1;
+}
+
+.gs-description__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.2;
+}
+
+.gs-description__text {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.gs-description__text p {
+    margin-bottom: var(--spacing-lg);
+}
+
+.gs-description__text p:last-child {
+    margin-bottom: 0;
+}
+
+.gs-description__text strong {
+    color: var(--color-text-inverted);
+    font-weight: var(--font-weight-bold);
+}
+
+/* ---------- Album & Tracklist Section ---------- */
+.gs-album {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-primary);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.gs-album.visible {
+    opacity: 1;
+}
+
+.gs-album__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+}
+
+.gs-album__cover-wrapper {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0, 174, 239, 0.4),
+                0 0 100px rgba(0, 174, 239, 0.2);
+}
+
+.gs-album__cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gs-album__credits {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+}
+
+.gs-album__credits strong {
+    color: var(--color-text-inverted);
+    font-weight: var(--font-weight-bold);
+}
+
+.gs-tracklist {
+    list-style: none;
+    counter-reset: track-counter;
+}
+
+.gs-tracklist__item {
+    counter-increment: track-counter;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-inverted);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.gs-tracklist__item::before {
+    content: counter(track-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: var(--font-weight-medium);
+}
+
+.gs-tracklist__item:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Streaming Platforms ---------- */
+.gs-platforms {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-primary);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.gs-platforms.visible {
+    opacity: 1;
+}
+
+.gs-platforms__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-inverted);
+    margin-bottom: var(--spacing-xl);
+}
+
+.gs-platforms__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2xl);
+    flex-wrap: wrap;
+}
+
+.gs-platform-link {
+    display: block;
+    transition: all var(--transition-normal);
+    opacity: 0.8;
+}
+
+.gs-platform-link:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+}
+
+.gs-platform-link img {
+    height: 40px;
+    width: auto;
+}
+
+/* ---------- Studio Gallery ---------- */
+.gs-gallery {
+    padding: var(--spacing-2xl) 0;
+    background: linear-gradient(135deg, #e91e63 0%, #d81b60 50%, #c2185b 100%);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.gs-gallery.visible {
+    opacity: 1;
+}
+
+.gs-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.gs-gallery__item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4/3;
+}
+
+.gs-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ---------- Press Section ---------- */
+.gs-press {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-primary);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.gs-press.visible {
+    opacity: 1;
+}
+
+.gs-press__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.gs-press__articles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.gs-press__article {
+    padding: var(--spacing-lg) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gs-press__article-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-inverted);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.gs-press__article-link {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+.gs-press__article-link:hover {
+    color: var(--color-text-inverted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .gospel-curtain__title {
+        font-size: 1.5rem;
+    }
+
+    .gospel-curtain__subtitle {
+        font-size: 2.5rem;
+    }
+
+    .gs-description__title {
+        font-size: var(--font-size-xl);
+    }
+
+    .gs-album__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .gs-gallery__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .gs-press__articles {
+        grid-template-columns: 1fr;
+    }
+}

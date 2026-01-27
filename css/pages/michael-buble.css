@@ -1,0 +1,381 @@
+/* ===========================================
+   ESTILOS ESPECÍFICOS DE MICHAEL BUBLÉ PAGE
+   =========================================== */
+
+/* ---------- Curtain Animation ---------- */
+.michael-buble-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.michael-buble-curtain.curtain-open {
+    transform: translateY(-100%);
+}
+
+.michael-buble-curtain__title {
+    font-size: 2rem;
+    font-weight: var(--font-weight-normal);
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.michael-buble-curtain__subtitle {
+    font-size: 4rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+/* Loading Indicator */
+.michael-buble-curtain__loader {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.michael-buble-curtain__loader-text {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.michael-buble-curtain__loader-bar {
+    width: 200px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.michael-buble-curtain__loader-progress {
+    height: 100%;
+    background-color: var(--color-text-inverted);
+    width: 0;
+    animation: loadingProgress 1.2s ease-in-out forwards;
+}
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* ---------- Hero Section ---------- */
+.mb-hero {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.mb-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
+.mb-hero__content {
+    position: relative;
+    z-index: 1;
+}
+
+.mb-hero .section-title__text,
+.mb-hero .heading-hero {
+    color: var(--color-text-inverted);
+}
+
+.mb-hero .section-title__line {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ---------- Description Section ---------- */
+.mb-description {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-primary);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.mb-description.visible {
+    opacity: 1;
+}
+
+.mb-description__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.2;
+}
+
+.mb-description__text {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.mb-description__text p {
+    margin-bottom: var(--spacing-lg);
+}
+
+.mb-description__text p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- Album & Tracklist Section ---------- */
+.mb-album {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-primary);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.mb-album.visible {
+    opacity: 1;
+}
+
+.mb-album__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+}
+
+.mb-album__cover-wrapper {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0, 174, 239, 0.4),
+                0 0 100px rgba(0, 174, 239, 0.2);
+}
+
+.mb-album__cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mb-album__credits {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+}
+
+.mb-album__credits strong {
+    color: var(--color-text-inverted);
+    font-weight: var(--font-weight-bold);
+}
+
+.mb-tracklist {
+    list-style: none;
+    counter-reset: track-counter;
+}
+
+.mb-tracklist__item {
+    counter-increment: track-counter;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-inverted);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.mb-tracklist__item::before {
+    content: counter(track-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: var(--font-weight-medium);
+}
+
+.mb-tracklist__item:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Streaming Platforms ---------- */
+.mb-platforms {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-primary);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.mb-platforms.visible {
+    opacity: 1;
+}
+
+.mb-platforms__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-inverted);
+    margin-bottom: var(--spacing-xl);
+}
+
+.mb-platforms__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2xl);
+    flex-wrap: wrap;
+}
+
+.mb-platform-link {
+    display: block;
+    transition: all var(--transition-normal);
+    opacity: 0.8;
+}
+
+.mb-platform-link:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+}
+
+.mb-platform-link img {
+    height: 40px;
+    width: auto;
+}
+
+/* ---------- Studio Gallery ---------- */
+.mb-gallery {
+    padding: var(--spacing-2xl) 0;
+    background: linear-gradient(135deg, #e91e63 0%, #d81b60 50%, #c2185b 100%);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.mb-gallery.visible {
+    opacity: 1;
+}
+
+.mb-gallery__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.mb-gallery__item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.mb-gallery__item--large {
+    grid-row: 1 / 3;
+}
+
+.mb-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ---------- Press Section ---------- */
+.mb-press {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-primary);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.mb-press.visible {
+    opacity: 1;
+}
+
+.mb-press__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-inverted);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.mb-press__articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.mb-press__article {
+    padding: var(--spacing-lg) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mb-press__article-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-inverted);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.mb-press__article-link {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+.mb-press__article-link:hover {
+    color: var(--color-text-inverted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .michael-buble-curtain__title {
+        font-size: 1.5rem;
+    }
+
+    .michael-buble-curtain__subtitle {
+        font-size: 2.5rem;
+    }
+
+    .mb-description__title {
+        font-size: var(--font-size-xl);
+    }
+
+    .mb-album__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .mb-gallery__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .mb-gallery__item--large {
+        grid-row: auto;
+    }
+
+    .mb-press__articles {
+        grid-template-columns: 1fr;
+    }
+}

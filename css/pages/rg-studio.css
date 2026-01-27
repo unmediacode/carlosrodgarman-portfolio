@@ -41,6 +41,26 @@
     margin: 0;
 }
 
+/* ---------- Fade-in suave para secciones ---------- */
+.about-studio-section,
+.services-section,
+.dolby-section,
+.legendary-mics-section,
+.equipment-section,
+.section--dark {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.about-studio-section.visible,
+.services-section.visible,
+.dolby-section.visible,
+.legendary-mics-section.visible,
+.equipment-section.visible,
+.section--dark.visible {
+    opacity: 1;
+}
+
 /* ---------- Loading Indicator ---------- */
 .rg-studio-hero__loader {
     margin-top: 3rem;
