@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/layout.css">
 
     <!-- CSS del Technical Video Card -->
-    <link rel="stylesheet" href="technical-videos/technical-video-card.css">
+    <link rel="stylesheet" href="assets/technical-videos/technical-video-card.css">
 
     <!-- CSS específico de Technical Videos -->
     <link rel="stylesheet" href="css/pages/technical-videos.css">
@@ -115,7 +115,7 @@
                     </div>
                     <div class="neve-featured__video">
                         <div class="neve-featured__video-wrapper">
-                            <img src="technical-videos/images/miniaturas/neve-resumen.jpg" alt="Neve Genesys Black Resumen" class="neve-featured__thumbnail">
+                            <img src="assets/technical-videos/images/miniaturas/neve-resumen.jpg" alt="Neve Genesys Black Resumen" class="neve-featured__thumbnail">
                             <div class="neve-featured__play-overlay">
                                 <button class="neve-featured__play-button" aria-label="Play video">
                                     <div class="neve-featured__play-icon"></div>
@@ -158,7 +158,7 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script src="technical-videos/technical-video-card.js"></script>
+    <script src="assets/technical-videos/technical-video-card.js"></script>
     <script>
         // Initialize Technical Video cards
         const heroSection = document.querySelector('.technical-hero');
@@ -209,7 +209,7 @@
         animateProgress();
 
         // Load technical videos data
-        fetch('technical-videos/technical-videos-data.json')
+        fetch('assets/technical-videos/technical-videos-data.json')
             .then(response => response.json())
             .then(videos => {
                 allVideos = videos;
@@ -225,7 +225,7 @@
                     category: 'NEVE SERIES',
                     series: 'Neve Genesys Black',
                     description: 'Serie completa de seis partes que documenta la integración entre hardware analógico y control digital de la consola Neve Genesys Black.',
-                    coverImage: 'technical-videos/images/miniaturas/neve-resumen.jpg',
+                    coverImage: 'assets/technical-videos/images/miniaturas/neve-resumen.jpg',
                     videoUrl: 'https://www.youtube.com/watch?v=OWWuXbcvs-Q',
                     year: '2020',
                     tags: ['Neve Genesys Black', 'Complete Series', 'DAW Integration', 'Analog Console', 'Hybrid Workflow']

@@ -4,7 +4,7 @@ Este folder contiene las thumbnails (miniaturas) de los videos técnicos en la s
 
 ## Ubicación de las Imágenes
 
-Todas las miniaturas deben estar en: `technical-videos/images/miniaturas/`
+Todas las miniaturas deben estar en: `assets/technical-videos/images/miniaturas/`
 
 ## Especificaciones de Imágenes
 

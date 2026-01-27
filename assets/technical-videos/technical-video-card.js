@@ -62,7 +62,7 @@ class TechnicalVideoCard {
                 img.classList.add('loaded');
             });
             img.addEventListener('error', () => {
-                img.src = 'technical-videos/images/placeholder.svg';
+                img.src = 'assets/technical-videos/images/placeholder.svg';
                 img.classList.add('loaded');
             });
         }
