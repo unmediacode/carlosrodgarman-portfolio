@@ -221,25 +221,31 @@
     font-weight: 600;
     color: var(--color-dark);
     text-transform: uppercase;
+    font-size: 0.9rem;
+    flex: 1;
+    text-align: center;
 }
 
 .calendar-nav {
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .calendar-nav button {
-    background: none;
+    background: var(--color-accent);
     border: none;
     cursor: pointer;
-    color: var(--color-accent);
-    font-size: 1rem;
-    padding: 5px;
-    transition: opacity 0.3s ease;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 4px 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    line-height: 1;
 }
 
 .calendar-nav button:hover {
-    opacity: 0.7;
+    background: var(--color-dark);
+    transform: scale(1.1);
 }
 
 .calendar-grid {
@@ -274,13 +280,26 @@
 }
 
 .calendar-day.has-post {
-    background: #f0f0f0;
-    font-weight: 600;
-    color: var(--color-dark);
+    background: var(--color-accent);
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+}
+
+.calendar-day.has-post::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
 }
 
 .calendar-day.has-post:hover {
-    background: var(--color-accent);
+    background: var(--color-dark);
     color: #fff;
 }
 
@@ -461,6 +480,16 @@
     background: var(--color-accent);
     color: #fff;
     border-color: var(--color-accent);
+}
+
+.pagination__ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: var(--color-gray);
+    font-weight: 600;
 }
 
 /* ---------- Responsive Design ---------- */

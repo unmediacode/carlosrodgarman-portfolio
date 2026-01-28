@@ -114,6 +114,11 @@ class BlogManager {
         const totalPages = Math.ceil(this.filteredPosts.length / this.postsPerPage);
         const paginationContainer = document.getElementById('blogPagination');
 
+        if (!paginationContainer) {
+            console.error('Pagination container not found');
+            return;
+        }
+
         if (totalPages <= 1) {
             paginationContainer.style.display = 'none';
             return;
@@ -125,19 +130,47 @@ class BlogManager {
         const nextBtn = paginationContainer.querySelector('.pagination__btn--next');
         const numbersContainer = paginationContainer.querySelector('.pagination__numbers');
 
+        if (!prevBtn || !nextBtn || !numbersContainer) {
+            console.error('Pagination elements not found');
+            return;
+        }
+
         // Update buttons state
         prevBtn.disabled = this.currentPage === 1;
         nextBtn.disabled = this.currentPage === totalPages;
 
-        // Generate page numbers
+        // Generate page numbers (limit to show max 7 pages at a time)
         let numbersHTML = '';
-        for (let i = 1; i <= totalPages; i++) {
+        const maxVisible = 7;
+        let startPage = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+        if (endPage - startPage < maxVisible - 1) {
+            startPage = Math.max(1, endPage - maxVisible + 1);
+        }
+
+        if (startPage > 1) {
+            numbersHTML += `<button class="pagination__number" data-page="1">1</button>`;
+            if (startPage > 2) {
+                numbersHTML += `<span class="pagination__ellipsis">...</span>`;
+            }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
             numbersHTML += `
                 <button class="pagination__number ${i === this.currentPage ? 'active' : ''}" data-page="${i}">
                     ${i}
                 </button>
             `;
         }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                numbersHTML += `<span class="pagination__ellipsis">...</span>`;
+            }
+            numbersHTML += `<button class="pagination__number" data-page="${totalPages}">${totalPages}</button>`;
+        }
+
         numbersContainer.innerHTML = numbersHTML;
 
         // Add event listeners
@@ -164,9 +197,20 @@ class BlogManager {
 
     renderCalendar() {
         const calendarContainer = document.getElementById('blogCalendar');
-        const now = new Date();
-        const currentMonth = now.getMonth();
-        const currentYear = now.getFullYear();
+
+        // Initialize calendar state if not exists
+        if (!this.calendarState) {
+            // Find the most recent post date
+            const recentPost = this.posts[0]; // Already sorted by date
+            const recentDate = new Date(recentPost.publishDate);
+            this.calendarState = {
+                month: recentDate.getMonth(),
+                year: recentDate.getFullYear()
+            };
+        }
+
+        const currentMonth = this.calendarState.month;
+        const currentYear = this.calendarState.year;
 
         const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'];
@@ -185,7 +229,13 @@ class BlogManager {
 
         let calendarHTML = `
             <div class="calendar-header">
+                <div class="calendar-nav">
+                    <button onclick="blogManager.changeMonth(-1)" aria-label="Previous month">‹</button>
+                </div>
                 <span class="calendar-month">${monthNames[currentMonth]} ${currentYear}</span>
+                <div class="calendar-nav">
+                    <button onclick="blogManager.changeMonth(1)" aria-label="Next month">›</button>
+                </div>
             </div>
             <div class="calendar-grid">
                 ${dayNames.map(day => `<div class="calendar-day-header">${day}</div>`).join('')}
@@ -204,6 +254,20 @@ class BlogManager {
 
         calendarHTML += '</div>';
         calendarContainer.innerHTML = calendarHTML;
+    }
+
+    changeMonth(direction) {
+        this.calendarState.month += direction;
+
+        if (this.calendarState.month > 11) {
+            this.calendarState.month = 0;
+            this.calendarState.year++;
+        } else if (this.calendarState.month < 0) {
+            this.calendarState.month = 11;
+            this.calendarState.year--;
+        }
+
+        this.renderCalendar();
     }
 
     renderCategories() {
@@ -364,6 +428,7 @@ class BlogManager {
 }
 
 // Initialize blog when DOM is ready
+let blogManager;
 document.addEventListener('DOMContentLoaded', () => {
-    new BlogManager();
+    blogManager = new BlogManager();
 });
