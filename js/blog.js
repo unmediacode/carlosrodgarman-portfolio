@@ -114,17 +114,26 @@ class BlogManager {
         const totalPages = Math.ceil(this.filteredPosts.length / this.postsPerPage);
         const paginationContainer = document.getElementById('blogPagination');
 
+        console.log('Rendering pagination:', {
+            totalPosts: this.filteredPosts.length,
+            postsPerPage: this.postsPerPage,
+            totalPages: totalPages,
+            currentPage: this.currentPage
+        });
+
         if (!paginationContainer) {
             console.error('Pagination container not found');
             return;
         }
 
         if (totalPages <= 1) {
+            console.log('Only 1 page, hiding pagination');
             paginationContainer.style.display = 'none';
             return;
         }
 
         paginationContainer.style.display = 'flex';
+        console.log('Pagination visible');
 
         const prevBtn = paginationContainer.querySelector('.pagination__btn--prev');
         const nextBtn = paginationContainer.querySelector('.pagination__btn--next');
@@ -174,15 +183,27 @@ class BlogManager {
         numbersContainer.innerHTML = numbersHTML;
 
         // Add event listeners
-        prevBtn.onclick = () => this.goToPage(this.currentPage - 1);
-        nextBtn.onclick = () => this.goToPage(this.currentPage + 1);
+        prevBtn.onclick = () => {
+            console.log('Previous button clicked');
+            this.goToPage(this.currentPage - 1);
+        };
+        nextBtn.onclick = () => {
+            console.log('Next button clicked');
+            this.goToPage(this.currentPage + 1);
+        };
 
         numbersContainer.querySelectorAll('.pagination__number').forEach(btn => {
-            btn.onclick = () => this.goToPage(parseInt(btn.dataset.page));
+            btn.onclick = () => {
+                const page = parseInt(btn.dataset.page);
+                console.log('Page button clicked:', page);
+                this.goToPage(page);
+            };
         });
+        console.log('Event listeners attached to pagination buttons');
     }
 
     goToPage(page) {
+        console.log('Going to page:', page);
         this.currentPage = page;
         this.renderPosts();
         window.scrollTo({ top: 0, behavior: 'smooth' });
