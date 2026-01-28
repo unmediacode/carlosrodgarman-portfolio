@@ -12,6 +12,7 @@
     justify-content: center;
     text-align: center;
     padding: 80px 20px;
+    background: #fff;
 }
 
 .post-error h2 {
@@ -49,6 +50,11 @@
 .breadcrumb span:last-child {
     color: var(--color-dark);
     font-weight: 600;
+}
+
+/* ---------- Post Content Container ---------- */
+.post-content {
+    background: #fff;
 }
 
 /* ---------- Post Header ---------- */
