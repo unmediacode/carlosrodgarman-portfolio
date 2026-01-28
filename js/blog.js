@@ -212,13 +212,18 @@ class BlogManager {
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-        // Get post dates for this month
-        const postDates = this.posts
-            .filter(post => {
-                const postDate = new Date(post.publishDate);
-                return postDate.getMonth() === currentMonth && postDate.getFullYear() === currentYear;
-            })
-            .map(post => new Date(post.publishDate).getDate());
+        // Build map of day -> posts for this month
+        const postsByDay = {};
+        this.posts.forEach(post => {
+            const postDate = new Date(post.publishDate);
+            if (postDate.getMonth() === currentMonth && postDate.getFullYear() === currentYear) {
+                const day = postDate.getDate();
+                if (!postsByDay[day]) {
+                    postsByDay[day] = [];
+                }
+                postsByDay[day].push(post);
+            }
+        });
 
         let calendarHTML = `
             <div class="calendar-header">
@@ -241,12 +246,102 @@ class BlogManager {
 
         // Days of the month
         for (let day = 1; day <= daysInMonth; day++) {
-            const hasPost = postDates.includes(day);
-            calendarHTML += `<div class="calendar-day ${hasPost ? 'has-post' : ''}">${day}</div>`;
+            const hasPost = postsByDay[day] && postsByDay[day].length > 0;
+            const postCount = hasPost ? postsByDay[day].length : 0;
+
+            if (hasPost) {
+                calendarHTML += `<div class="calendar-day has-post" data-day="${day}" data-count="${postCount}" title="${postCount} post${postCount > 1 ? 's' : ''} on this day">${day}</div>`;
+            } else {
+                calendarHTML += `<div class="calendar-day">${day}</div>`;
+            }
         }
 
         calendarHTML += '</div>';
         calendarContainer.innerHTML = calendarHTML;
+
+        // Add click listeners to days with posts
+        this.attachCalendarClickListeners(postsByDay);
+    }
+
+    attachCalendarClickListeners(postsByDay) {
+        const calendarDays = document.querySelectorAll('.calendar-day.has-post');
+
+        calendarDays.forEach(dayElement => {
+            dayElement.addEventListener('click', () => {
+                const day = parseInt(dayElement.dataset.day);
+                const posts = postsByDay[day];
+
+                if (posts && posts.length > 0) {
+                    if (posts.length === 1) {
+                        // Single post: navigate directly to it
+                        window.location.href = `blog-post.html?id=${posts[0].id}`;
+                    } else {
+                        // Multiple posts: filter by this date
+                        this.filterByDate(day);
+                    }
+                }
+            });
+        });
+    }
+
+    filterByDate(day) {
+        const currentMonth = this.calendarState.month;
+        const currentYear = this.calendarState.year;
+
+        // Format date as YYYY-MM-DD for comparison
+        const targetDate = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+        // Filter posts by this date
+        this.filteredPosts = this.posts.filter(post => post.publishDate === targetDate);
+        this.currentPage = 1;
+        this.currentCategory = 'all';
+
+        // Render filtered posts
+        this.renderPosts();
+
+        // Update categories to show we're in a filtered state
+        document.querySelectorAll('.category-link').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Scroll to posts
+        document.getElementById('blogPosts').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Show notification
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'];
+
+        const notification = document.createElement('div');
+        notification.className = 'calendar-filter-notification';
+        notification.innerHTML = `
+            <span>Showing ${this.filteredPosts.length} post${this.filteredPosts.length > 1 ? 's' : ''} from ${monthNames[currentMonth]} ${day}, ${currentYear}</span>
+            <button onclick="blogManager.clearDateFilter()">✕ Clear filter</button>
+        `;
+
+        const postsContainer = document.getElementById('blogPosts');
+        postsContainer.parentElement.insertBefore(notification, postsContainer);
+
+        // Remove previous notification if exists
+        const existingNotification = document.querySelector('.calendar-filter-notification');
+        if (existingNotification && existingNotification !== notification) {
+            existingNotification.remove();
+        }
+    }
+
+    clearDateFilter() {
+        // Reset to all posts
+        this.filteredPosts = [...this.posts];
+        this.currentPage = 1;
+        this.renderPosts();
+
+        // Remove notification
+        const notification = document.querySelector('.calendar-filter-notification');
+        if (notification) {
+            notification.remove();
+        }
+
+        // Restore active category if any
+        this.renderSidebar();
     }
 
     changeMonth(direction) {

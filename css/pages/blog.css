@@ -277,14 +277,13 @@
 
 .calendar-day {
     color: #666;
-    cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 4px;
+    cursor: default;
 }
 
 .calendar-day:hover {
-    background: var(--blog-accent);
-    color: #fff;
+    background: #f0f0f0;
 }
 
 .calendar-day.has-post {
@@ -292,6 +291,7 @@
     font-weight: 700;
     color: #fff;
     position: relative;
+    cursor: pointer;
 }
 
 .calendar-day.has-post::after {
@@ -309,11 +309,17 @@
 .calendar-day.has-post:hover {
     background: var(--blog-dark);
     color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .calendar-day.empty {
     color: #ccc;
     cursor: default;
+}
+
+.calendar-day.empty:hover {
+    background: transparent;
 }
 
 .calendar-day.empty:hover {
@@ -498,6 +504,51 @@
     height: 45px;
     color: var(--blog-gray);
     font-weight: 600;
+}
+
+/* ---------- Calendar Filter Notification ---------- */
+.calendar-filter-notification {
+    background: var(--blog-accent);
+    color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calendar-filter-notification span {
+    font-weight: 600;
+}
+
+.calendar-filter-notification button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.calendar-filter-notification button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
 }
 
 /* ---------- Responsive Design ---------- */
