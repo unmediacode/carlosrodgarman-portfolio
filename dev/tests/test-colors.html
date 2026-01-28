@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Panel Colors</title>
-    <link rel="stylesheet" href="cd-player/cd-player.css">
+    <link rel="stylesheet" href="../../components/cd-player/cd-player.css">
     <style>
         body {
             background: #1a1a1a;
@@ -40,10 +40,10 @@
 
     <div id="testGrid" class="test-grid"></div>
 
-    <script src="cd-player/cd-player.js"></script>
+    <script src="../../components/cd-player/cd-player.js"></script>
     <script>
         // Load first 15 albums to test color extraction
-        fetch('cd-player/music-data.json')
+        fetch('../../components/cd-player/music-data.json')
             .then(response => response.json())
             .then(albums => {
                 const testAlbums = albums.slice(0, 15);

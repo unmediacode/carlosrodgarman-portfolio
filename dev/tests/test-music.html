@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Music Players</title>
-    <link rel="stylesheet" href="cd-player/cd-player.css">
+    <link rel="stylesheet" href="../../components/cd-player/cd-player.css">
     <style>
         body {
             background: #f0f0f0;
@@ -35,13 +35,13 @@
     <div class="debug" id="debugInfo"></div>
     <div id="albumsGrid" class="test-grid"></div>
 
-    <script src="cd-player/cd-player.js"></script>
+    <script src="../../components/cd-player/cd-player.js"></script>
     <script>
         const debugEl = document.getElementById('debugInfo');
         debugEl.innerHTML = '<p>Loading albums...</p>';
 
         // Initialize players
-        initCDPlayers('cd-player/music-data.json');
+        initCDPlayers('../../components/cd-player/music-data.json');
 
         // Debug
         setTimeout(() => {

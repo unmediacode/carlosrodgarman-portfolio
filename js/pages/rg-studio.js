@@ -226,11 +226,9 @@ document.addEventListener('DOMContentLoaded', function() {
             micModalDownload.setAttribute('download', `${mic.name}-manual.pdf`);
         }
 
-        // TODO: Cuando tengas los diagramas polares, descomentar esto:
-        // const diagramPlaceholder = document.querySelector('.mic-modal__diagram-placeholder');
-        // if (diagramPlaceholder && mic.diagram) {
-        //     diagramPlaceholder.innerHTML = `<img src="${mic.diagram}" alt="${mic.name} Polar Pattern">`;
-        // }
+        // TODO: Add polar diagram display when diagram images are available
+        // Expected location: assets/diagrams/microphones/
+        // Add 'diagram' property to mic data in equipment-links.json
 
         micModal.classList.add('active');
         document.body.style.overflow = 'hidden';

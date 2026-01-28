@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Players Debug</title>
-    <link rel="stylesheet" href="cd-player/cd-player.css">
+    <link rel="stylesheet" href="../../components/cd-player/cd-player.css">
     <style>
         body {
             background: #1a1a1a;
@@ -28,13 +28,13 @@
     <div class="debug" id="debugInfo">Loading...</div>
     <div id="albumsGrid" class="albums-grid"></div>
 
-    <script src="cd-player/cd-player.js"></script>
+    <script src="../../components/cd-player/cd-player.js"></script>
     <script>
         const debugEl = document.getElementById('debugInfo');
 
         console.log('Starting initialization...');
 
-        fetch('cd-player/music-data.json')
+        fetch('../../components/cd-player/music-data.json')
             .then(response => {
                 console.log('Fetch response:', response);
                 return response.json();

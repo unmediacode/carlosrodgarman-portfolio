@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/layout.css">
 
     <!-- CSS del CD Player -->
-    <link rel="stylesheet" href="cd-player/cd-player.css">
+    <link rel="stylesheet" href="components/cd-player/cd-player.css">
 
     <!-- CSS específico de Music -->
     <link rel="stylesheet" href="css/pages/music.css">
@@ -106,7 +106,7 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script src="cd-player/cd-player.js"></script>
+    <script src="components/cd-player/cd-player.js"></script>
     <script>
         // Initialize CD players with progressive loading
         const heroSection = document.querySelector('.music-hero');
@@ -153,7 +153,7 @@
         animateProgress();
 
         // Load players progressively
-        fetch('cd-player/music-data.json')
+        fetch('components/cd-player/music-data.json')
             .then(response => response.json())
             .then(albums => {
                 let loadedCount = 0;

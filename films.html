@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/layout.css">
 
     <!-- CSS del Film Card -->
-    <link rel="stylesheet" href="films/film-card.css">
+    <link rel="stylesheet" href="components/films/film-card.css">
 
     <!-- CSS específico de Films -->
     <link rel="stylesheet" href="css/pages/films.css">
@@ -106,7 +106,7 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script src="films/film-card.js"></script>
+    <script src="components/films/film-card.js"></script>
     <script>
         // Initialize Film cards with progressive loading
         const heroSection = document.querySelector('.films-hero');
@@ -153,7 +153,7 @@
         animateProgress();
 
         // Load films data
-        fetch('films/films-data.json')
+        fetch('components/films/films-data.json')
             .then(response => response.json())
             .then(films => {
                 let loadedCount = 0;

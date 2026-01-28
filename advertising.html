@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/layout.css">
 
     <!-- CSS del Advertising Card -->
-    <link rel="stylesheet" href="advertising/advertising-card.css">
+    <link rel="stylesheet" href="components/advertising/advertising-card.css">
 
     <!-- CSS específico de Advertising -->
     <link rel="stylesheet" href="css/pages/advertising.css">
@@ -122,7 +122,7 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script src="advertising/advertising-card.js"></script>
+    <script src="components/advertising/advertising-card.js"></script>
     <script>
         // Initialize Advertising cards with filtering
         const heroSection = document.querySelector('.advertising-hero');
@@ -173,7 +173,7 @@
         animateProgress();
 
         // Load advertising items
-        fetch('advertising/advertising-data.json')
+        fetch('components/advertising/advertising-data.json')
             .then(response => response.json())
             .then(items => {
                 allItems = items;
