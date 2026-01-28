@@ -85,13 +85,6 @@ class BlogManager {
                             </svg>
                             <time datetime="${post.publishDate}" itemprop="datePublished">${formattedDate}</time>
                         </span>
-                        <span class="post-card__read-time">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            ${post.readTime}
-                        </span>
                     </div>
                     <h2 class="post-card__title" itemprop="headline">${post.title}</h2>
                     <p class="post-card__excerpt" itemprop="description">${post.excerpt}</p>

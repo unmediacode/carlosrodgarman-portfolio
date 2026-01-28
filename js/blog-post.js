@@ -62,7 +62,6 @@ class BlogPost {
         document.getElementById('postCategory').textContent = this.post.category;
         document.getElementById('postDate').textContent = formattedDate;
         document.getElementById('postDate').setAttribute('datetime', this.post.publishDate);
-        document.getElementById('postReadTime').textContent = this.post.readTime;
 
         // Update title and author
         document.getElementById('postTitle').textContent = this.post.title;
