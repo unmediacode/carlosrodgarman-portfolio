@@ -87,7 +87,7 @@
 
     // Actualizar nav link activo al hacer scroll
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav__link');
+    // Reutilizamos navLinks ya declarado arriba (línea 14)
 
     function updateActiveNavLink() {
         const scrollPosition = window.scrollY + 100;
