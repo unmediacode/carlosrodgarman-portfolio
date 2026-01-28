@@ -8,7 +8,7 @@ class BlogManager {
         this.posts = [];
         this.filteredPosts = [];
         this.currentPage = 1;
-        this.postsPerPage = 5;
+        this.postsPerPage = 4;
         this.currentCategory = 'all';
         this.init();
     }
